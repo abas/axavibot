@@ -65,6 +65,19 @@ module['exports'] = function axaviBot(hook) {
         }
     } else if (msg.includes('anjay') || msg.includes('anjaa') || msg.includes('anjaaa') || msg.includes('asem') || msg.includes('aseem')) {
         rep = 'wkwk 😝';
+    } else if(msg.includes('terimakasih')||msg.includes('makasih')||msg.includes('makasii')){
+        var op = Math.floor((Math.random() * 3) + 1 );
+        switch (op) {
+            case 1:
+                rep = 'sama-samaa 😄';
+                break;
+            case 2:
+                rep = 'YOi kak hehe';
+                break;
+            case 3:
+                rep = 'terimakasih doang nih? .__.';
+                break;
+        }
     }
 
 
@@ -74,14 +87,19 @@ module['exports'] = function axaviBot(hook) {
         rep = 'xavi selalu sehat :D\nkakak sendiri gimana? :D';
     } else if (msg.includes('sehat') || msg.includes('alhamdulillaah') || msg.includes('baik')) {
         rep = 'alhamdulillaaah :)';
-    } else if (msg.includes('jam') || msg.includes('jam?')) {
+    } 
+    
+    // JAM
+    else if (msg.includes('jam') || msg.includes('jam?')) {
         if (msg.includes('sekarang') || msg.includes('ini')) {
             var d = new Date();
             rep = 'sekarang jam |' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '| kak';
         } else {
             rep = 'jam apa kak? ._.';
         }
-    } else if (msg.includes('lagi apa') || msg.includes('lagi apa?')) {
+    }
+    
+    else if (msg.includes('lagi apa') || msg.includes('lagi apa?')) {
         var op = Math.floor((Math.random() * 5) + 1);
         switch (op) {
             case 1:
