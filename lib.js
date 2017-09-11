@@ -1,7 +1,6 @@
-function Response(msg,hook){
+function Response(msg){
     if(msg.includes('hai')){
-        return 'hai juga '+hook.params.message.chat.first_name;
+        return 'hai juga ';
     }
 }
-
 exports.Response=Response;

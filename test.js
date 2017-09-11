@@ -5,6 +5,6 @@
 var msg = 'hai';
 // post res
 var R = require('./lib');
-var rep = R.Response();
+var rep = R.Response(msg);
 
 console.log(rep);

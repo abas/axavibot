@@ -4,13 +4,12 @@ module['exports'] = function axaviBot(hook) {
     // impor modul request
     var request = require('request');
     var R = require('./lib');
+    
     // reply msg
     var msg = hook.params.message.text.toLowerCase();
 
     var getHook = hook;
     var rep = R.Response(msg,getHook);
-
-    //logically reply
 
     // buat atau kirim request ke bot telegram
     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
@@ -21,3 +20,9 @@ module['exports'] = function axaviBot(hook) {
 
         });
 }
+
+
+var R = require('./lib');
+var rep = R.Response('hai');
+
+console.log(rep);
