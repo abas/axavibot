@@ -14,7 +14,7 @@ module['exports'] = function axaviBot(hook) {
         if (hook.params.message.chat.first_name == 'undefined') {
             rep = 'hi! saya xavi 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
         } else {
-            rep = 'hi! ' + hook.params.message.chat.first_name + ' saya xavi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
+            rep = 'hi! kak ' + hook.params.message.chat.first_name + ',... saya xavi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
         }
         var op = Math.floor((Math.random() * 4) + 1);
         switch (op) {
