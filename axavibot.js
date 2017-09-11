@@ -14,7 +14,7 @@ module['exports'] = function axaviBot(hook) {
         if (hook.params.message.chat.first_name == 'undefined') {
             rep = 'hi! saya xavi 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
         } else {
-            rep = 'hi! saya xavi ' + hook.params.message.chat.first_name + ' 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
+            rep = 'hi! ' + hook.params.message.chat.first_name + ' saya xavi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
         }
         var op = Math.floor((Math.random() * 4) + 1);
         switch (op) {
@@ -31,13 +31,13 @@ module['exports'] = function axaviBot(hook) {
                 rep = 'aku ngambek nih ._.';
                 break;
         }
-    } else if (msg == 'xavi' || msg.includes('xavi?') || msg.includes('??')) {
-        if (msg.length == 4) {
+    } else if (msg.includes('xa' || msg.includes('vi') || msg.includes('?') ||msg.includes('xavi?') {
+        if (msg.length  4) {
             rep = 'kenapa kak?';
-        } else if (msg.length < 2) {
+        } else if (msg.length < 4) {
             rep = 'iya kak .-.?';
         } else {
-            rep = 'hmmm';
+            rep = 'apa eh?';
         }
     } else if ((msg.length < 4 && msg.includes('lah')) || (msg.includes('lah') && msg.includes('ngaco')) || msg.includes('ngaco')) {
         rep = 'wkwkwk 😂';
