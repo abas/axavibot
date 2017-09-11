@@ -3,7 +3,27 @@ module['exports'] = function axaviBot(hook) {
 
     // impor modul request
     var request = require('request');
-    // var R = require('./lib');
+    
+    // function
+    function filterTextSaru(msg){
+        // update if ada masukan
+        var textSaru = [
+            'cuk','cok','coeg','su','asu','njing','fuck','fak','fuk','kontol','kontil',
+            'tai','tae','silit','bokong','ndas','ndes'
+        ];
+    
+        var distance = textSaru.length;
+        var idx=0;while(distance!=0){
+            if(msg.includes(textSaru[idx])){
+                return true;
+                break;
+            }else{
+                return false;
+                distance--;
+            }
+            idx++;
+        }
+    }
 
     // reply msg
     var msg = hook.params.message.text.toLowerCase();
@@ -149,6 +169,23 @@ module['exports'] = function axaviBot(hook) {
 
     }
 
+    // saru reply
+    else if(filterTextSaru(msg)){
+        var op = Math.floor((Math.random() * 5) + 1);
+        switch(op){
+            case 1:
+                rep = 'hayolhoo,, gaboleh bilang gituu';break;
+            case 2:
+                rep = 'ihh kakak jorok -_-';break;
+            case 3:
+                rep = 'kakak... gaboleh! dosa loh ._.';break;
+            case 4:
+                rep = 'loh loh loh, barusan bilang apaan hayoo...';break;
+            case 5:
+                rep = 'astaghfirullaaah.. istighfar kak -.-';break;
+        }
+    }
+
 
     else {
         var op = Math.floor((Math.random() * 5) + 1);
@@ -180,3 +217,7 @@ module['exports'] = function axaviBot(hook) {
 
         });
 }
+
+
+
+console.log(filterTextSaru('kamu baik deh'));
