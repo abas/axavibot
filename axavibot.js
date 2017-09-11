@@ -31,7 +31,7 @@ module['exports'] = function axaviBot(hook) {
                 rep = 'aku ngambek nih ._.';
                 break;
         }
-    } else if (msg.includes('xa' || msg.includes('vi') || msg.includes('?') ||msg.includes('xavi?') {
+    } else if ((msg.includes('xa') || msg.includes('vi')) && msg.includes('?') || msg.includes('xavi?')) {
         if (msg.length  4) {
             rep = 'kenapa kak?';
         } else if (msg.length < 4) {
