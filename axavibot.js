@@ -174,15 +174,20 @@ module['exports'] = function axaviBot(hook) {
         var op = Math.floor((Math.random() * 5) + 1);
         switch(op){
             case 1:
-                rep = 'hayolhoo,, gaboleh bilang gituu';break;
+                rep = 'hayolhoo,, gaboleh bilang gituu';
+                break;
             case 2:
-                rep = 'ihh kakak jorok -_-';break;
+                rep = 'ihh kakak jorok -_-';
+                break;
             case 3:
-                rep = 'kakak... gaboleh! dosa loh ._.';break;
+                rep = 'kakak... gaboleh! dosa loh ._.';
+                break;
             case 4:
-                rep = 'loh loh loh, barusan bilang apaan hayoo...';break;
+                rep = 'loh loh loh, barusan bilang apaan hayoo...';
+                break;
             case 5:
-                rep = 'astaghfirullaaah.. istighfar kak -.-';break;
+                rep = 'astaghfirullaaah.. istighfar kak -.-';
+                break;
         }
     }
 
@@ -217,7 +222,3 @@ module['exports'] = function axaviBot(hook) {
 
         });
 }
-
-
-
-console.log(filterTextSaru('kamu baik deh'));
