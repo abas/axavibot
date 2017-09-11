@@ -103,7 +103,7 @@ module['exports'] = function axaviBot(hook) {
     }
 
 
-    else if (msg.includes('hai')) {
+    else if (msg.includes('hai')&&!filterTextSaru(msg)) {
         if(hook.params.message.chat.first_name == null){
             rep = 'hai juga kak 😄';
         }else{
