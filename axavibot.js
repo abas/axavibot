@@ -82,7 +82,11 @@ module['exports'] = function axaviBot(hook) {
 
 
     else if (msg.includes('hai')) {
-        rep = 'hai juga kak ' + hook.params.message.chat.first_name + ' 😄';
+        if(hook.params.message.chat.first_name.includes('undefined')){
+            rep = 'hai juga kak 😄';
+        }else{
+            rep = 'hai juga kak ' + hook.params.message.chat.first_name + ' 😄';
+        }
     } else if (msg.includes('apa kabar') || msg.includes('apa kabar?') || msg.includes('kabar') || msg.includes('kabar?')) {
         rep = 'xavi selalu sehat :D\nkakak sendiri gimana? :D';
     } else if (msg.includes('sehat') || msg.includes('alhamdulillaah') || msg.includes('baik')) {
