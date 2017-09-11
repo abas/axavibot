@@ -3,7 +3,7 @@ module['exports'] = function axaviBot(hook) {
 
     // impor modul request
     var request = require('request');
-    var R = require('./lib');
+    // var R = require('./lib');
 
     // reply msg
     var msg = hook.params.message.text.toLowerCase();
