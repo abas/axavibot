@@ -5,12 +5,12 @@ module['exports'] = function axaviBot(hook) {
     var request = require('request');
 
     // reply msg
-    var msg = hook.params.message.text;
+    var msg = hook.params.message.text.toLowerCase();
     var rep = '';
 
     //logically reply
 
-    if (msg.toLowerCase().includes('/start')) {
+    if (msg.includes('/start')) {
         if (hook.params.message.chat.first_name == 'undefined') {
             rep = 'hi! saya xavi 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
         } else {
