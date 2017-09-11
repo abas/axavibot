@@ -3,7 +3,7 @@ var axaviModule = {
     filterTextSaru : function (msg){
         // update jika ada masukan
         var textSaru = [
-            'cuk','cok','coeg','su','asu','anjing','njing','anying','nying','anjng',''
+            'cuk','cok','coeg','su','asu','anjing','njing','anying','nying','anjng',
             'fuck','fak','fuk','kontol','kontil','goblok','bodo','bodoh','tolol','kntl',
             'tai','tae','silit','bokong','ndas','ndes','bento','koplo','suek','nds','fck',
             
