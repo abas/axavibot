@@ -8,6 +8,9 @@ module['exports'] = function axaviBot(hook) {
     // reply msg
     var msg = hook.params.message.text.toLowerCase();
     var rep = R.Response(msg);
+    if(rep == null){
+        rep = 'null';
+    }
 
     // buat atau kirim request ke bot telegram
     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
