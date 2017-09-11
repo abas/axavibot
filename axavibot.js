@@ -8,7 +8,8 @@ module['exports'] = function axaviBot(hook) {
     function filterTextSaru(msg){
         // update if ada masukan
         var textSaru = [
-            'cuk','cok','coeg','su','asu','njing','fuck','fak','fuk','kontol','kontil',
+            'cuk','cok','coeg','su','asu','anjing','njing','anying','nying',
+            'fuck','fak','fuk','kontol','kontil','goblok','bodo','bodoh',
             'tai','tae','silit','bokong','ndas','ndes'
         ];
     
@@ -180,7 +181,7 @@ module['exports'] = function axaviBot(hook) {
                 rep = 'ihh kakak jorok -_-';
                 break;
             case 3:
-                rep = 'kakak... gaboleh! dosa loh ._.';
+                rep = 'kakak... aku gk suka! -.-';
                 break;
             case 4:
                 rep = 'loh loh loh, barusan bilang apaan hayoo...';
