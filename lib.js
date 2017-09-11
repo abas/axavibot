@@ -1,7 +1,7 @@
 module['exports'] = {
-    Respon : function (msg){
+    function Respon (msg){
         if(msg.includes('hai')){
-            return 'hai juga'
+            return 'hai juga';
         }
     }
 }
