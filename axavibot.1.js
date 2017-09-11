@@ -10,7 +10,7 @@ module['exports'] = function axaviBot(hook) {
 
     //logically reply
 
-    if (msg.toLowerCase().includes('/start')) {
+    if (msg.includes('/start')) {
         if (hook.params.message.chat.first_name == 'undefined') {
             rep = 'hi! saya xavi 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
         } else {
