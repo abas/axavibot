@@ -82,7 +82,7 @@ module['exports'] = function axaviBot(hook) {
 
 
     else if (msg.includes('hai')) {
-        if(hook.params.message.chat.id.first_name == 'undefined'){
+        if(hook.params.message.chat.first_name == null){
             rep = 'hai juga kak 😄';
         }else{
             rep = 'hai juga kak ' + hook.params.message.chat.first_name + ' 😄';
@@ -176,7 +176,7 @@ module['exports'] = function axaviBot(hook) {
         .form(
             {
             'chat_id': hook.params.message.chat.id,
-            'text': rep,
+            'text': rep + ' ' + hook.params.message.chat.id.first_name,
 
         });
 }
