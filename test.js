@@ -2,8 +2,9 @@
 // var R = require('./lib');
 
 // get msg
-var msg = 'apa?';
+var msg = 'hai';
 // post res
-var rep = require('./lib').Respon(msg);
+var R = require('./lib');
+var rep = R.Response();
 
 console.log(rep);

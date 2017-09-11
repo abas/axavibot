@@ -1,7 +1,7 @@
-module['exports'] = {
-    function Respon (msg){
-        if(msg.includes('hai')){
-            return 'hai juga';
-        }
+function Response(msg,hook){
+    if(msg.includes('hai')){
+        return 'hai juga '+hook.params.message.chat.first_name;
     }
 }
+
+exports.Response=Response;

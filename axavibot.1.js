@@ -6,7 +6,9 @@ module['exports'] = function axaviBot(hook) {
     var R = require('./lib');
     // reply msg
     var msg = hook.params.message.text.toLowerCase();
-    var rep = R.Respon(msg);
+
+    var getHook = hook;
+    var rep = R.Response(msg,getHook);
 
     //logically reply
 
