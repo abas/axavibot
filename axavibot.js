@@ -32,9 +32,9 @@ module['exports'] = function axaviBot(hook) {
                 break;
         }
     } else if ((msg.includes('xa') || msg.includes('vi')) && msg.includes('?') || msg.includes('xavi?')) {
-        if (msg.length < 4) {
+        if (msg.length > 4) {
             rep = 'kenapa kak?';
-        } else if (msg.length < 4) {
+        } else if (msg.length < 6) {
             rep = 'iya kak .-.?';
         } else {
             rep = 'apa eh?';
