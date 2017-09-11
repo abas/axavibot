@@ -11,7 +11,7 @@ module['exports'] = function axaviBot(hook) {
     //logically reply
 
     if (msg.includes('/start')) {
-        if (hook.params.message.chat.first_name == 'undefined') {
+        if (hook.params.message.chat.first_name.includes('undefined')) {
             rep = 'hi! saya xavi 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
         } else {
             rep = 'hi! kak ' + hook.params.message.chat.first_name + ',... saya xavi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
