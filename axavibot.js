@@ -5,7 +5,7 @@ module['exports'] = function axaviBot(hook) {
     var request = require('request');
     
     // function
-    function filterTextSaru (msg){
+    function JerkFilter (msg){
         // update jika ada masukan
         var textSaru = [
             'cuk','cok','coeg','su','asu','anjing','njing','anying','nying','anjng',
@@ -29,12 +29,12 @@ module['exports'] = function axaviBot(hook) {
 
     // reply msg
     var msg = hook.params.message.text.toLowerCase();
-    var rep = '';
+    var rep = '';   
 
     //logically reply
 
     // saru filter
-    if(filterTextSaru(msg)){
+    if(JerkFilter(msg)){
         var op = Math.floor((Math.random() * 5) + 1);
         switch(op){
             case 1:
@@ -129,7 +129,7 @@ module['exports'] = function axaviBot(hook) {
         }
 
 
-        else if (msg.includes('hai')&&!filterTextSaru(msg)) {
+        else if (msg.includes('hai')) {
             if(hook.params.message.chat.first_name == null){
                 rep = 'hai juga kak 😄';
             }else{
