@@ -1,4 +1,5 @@
 var xavi = require('./lib')
 
-// tes filter word
-console.log(xavi.filterTextSaru('gondes'))
+console.log(xavi.JerkFilter('gondes'))
+console.log(xavi.MathFilter('1+1'));
+console.log(xavi.NumFilter('jahvscjavja9'));
