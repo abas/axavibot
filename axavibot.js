@@ -27,6 +27,29 @@ module['exports'] = function axaviBot(hook) {
         return bool;
     }
 
+    function PraiseFilter (msg){
+        var Praise = [
+            'cantik','ntik','cntk',
+            'ganteng','gntg',
+            'keren','kren','kyen','keyen',
+            'cakep','ckep','cakp','cakeep','caakep',
+            'mantab','ntab','mntab','mntb','mantap','ntap','mantp','mntap','mantaa'
+        ];
+        var bool = false;
+
+        var getLong = Praise.length;
+        var idx = 0;while(getLong!=0){
+            if(msg.includes(Praise[idx])){
+                return true;
+                break;
+            }else{
+                getLong--;
+            }
+            idx++;
+        }
+        return bool;
+    }
+
     // reply msg
     var msg = hook.params.message.text.toLowerCase();
     var rep = '';   
@@ -52,6 +75,42 @@ module['exports'] = function axaviBot(hook) {
             case 5:
                 rep = 'astaghfirullaaah.. istighfar kak -.-';
                 break;
+        }
+    }
+
+    else if(PraiseFilter(msg)){
+        if(msg.includes('cantik')){
+            var op = Math.floor((Math.random() * 5) + 1);
+            switch (op) {
+                case 1:
+                    rep = 'iya cantik kok';
+                    break;
+                case 2:
+                    rep = 'cantik... dikit 😅';
+                    break;
+                case 3:
+                    rep = 'nggak 😜';
+                    break;
+                case 4:
+                    rep = 'ngaku ngaku wuuu';
+                    break;
+                case 5:
+                    rep = 'iya iya percayaaa 😏';
+                    break;
+            }
+        }else{
+            var op = Math.floor((Math.random() * 3) + 1);
+            switch(op){
+                case 1:
+                    rep = 'pffftt pede ';
+                    break;
+                case 2:
+                    rep = 'hahaha pastilaah kak XD';
+                    break;
+                case 3:
+                    rep = 'mantabdjiwaa!!';
+                    break;
+            }
         }
     }
     
