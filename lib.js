@@ -3,10 +3,12 @@ var axaviModule = {
     JerkFilter : function(msg){
         // update jika ada masukan
         var textSaru = [
-            'cuk','cok','coeg','su','asu','anjing','njing','anying','nying','anjng',
-            'fuck','fak','fuk','kontol','kontil','goblok','bodo','bodoh','tolol','kntl',
-            'tai','tae','silit','bokong','ndas','ndes','bento','koplo','suek','nds','fck',
-            
+            'cuk','cok','coeg','su','asu','anjing','njing','anying','nying','anjng','fuck',
+            'fak','fuk','kontol','kontil','goblok','bodo','bodoh','tolol','kntl','tai','tae',
+            'silit','bokong','ndas','ndes','bento','koplo','suek','nds','fck','kmprt','pejuh',
+            'titit','memek','kmcl','lonte','lnte','itil','itel','itl','kprt','jembut','mbut',
+            'asshole','asshl','bgst','bangsat','bangsut','telek','tembelek','sex','gawok',
+            'bosok','bangke'
         ];
 
         var distance = textSaru.length;
@@ -60,7 +62,29 @@ var axaviModule = {
         }
         return bool;
     },
- 
+
+    PraiseFilter : function(msg){
+        var Praise = [
+            'cantik','ntik','cntk',
+            'ganteng','gntg',
+            'keren','kren','kyen','keyen',
+            'cakep','ckep','cakp','cakeep','caakep',
+            'mantab','ntab','mntab','mntb','mantap','ntap','mantp','mntap','mantaa'
+        ];
+        var bool = false;
+
+        var getLong = Praise.length;
+        var idx = 0;while(getLong!=0){
+            if(msg.includes(Praise[idx])){
+                return true;
+                break;
+            }else{
+                getLong--;
+            }
+            idx++;
+        }
+        return bool;
+    }
 }
 
 module.exports = axaviModule;
