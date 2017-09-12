@@ -32,6 +32,8 @@ module['exports'] = function axaviBot(hook) {
     var rep = '';
 
     //logically reply
+
+    // saru filter
     if(filterTextSaru(msg)){
         var op = Math.floor((Math.random() * 5) + 1);
         switch(op){
@@ -51,7 +53,9 @@ module['exports'] = function axaviBot(hook) {
                 rep = 'astaghfirullaaah.. istighfar kak -.-';
                 break;
         }
-    }else{
+    }
+    
+    else{
         if (msg.includes('/start')) {
             if (hook.params.message.chat.first_name == null) {
                 rep = 'hi! kak '+hook.params.message.from.first_name+' saya xavi 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
