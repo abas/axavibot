@@ -72,7 +72,7 @@ module['exports'] = function axaviBot(hook) {
     }
 
     function AbasCommand(msg){
-        if(AbasVerify()){
+        if(AbasVerify().state){
             if(msg.includes('/jadwal')||msg.includes('jadwal')){
                 return 'hari ini jadwal nya ini kak'
             }else{
@@ -111,6 +111,10 @@ module['exports'] = function axaviBot(hook) {
                 rep = 'astaghfirullaaah.. istighfar kak -.-';
                 break;
         }
+    }
+
+    else if(AbasVerify().state){
+        rep = AbasCommand(msg);
     }
 
     else if(PraiseFilter(msg)){
