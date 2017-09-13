@@ -73,7 +73,7 @@ module['exports'] = function axaviBot(hook) {
 
     function AbasCommand(msg){
         if(AbasVerify().state){
-            if(msg.includes('/jadwal')||msg.includes('jadwal')){
+            if(msg.includes('jadwal')){
                 return 'hari ini jadwal nya ini kak'
             }else{
                 return 'yaelah kak, command nya belum di set -.-'
