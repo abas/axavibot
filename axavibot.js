@@ -335,4 +335,15 @@ module['exports'] = function axaviBot(hook) {
             'text': rep+'\nchat id : '+hook.params.message.chat.id,
 
         });
+    
+    var d = new Date()
+    if(d.getMinutes()==2){
+        request.post('https://api.telegram.org/bot'+hook.env.axavibot+'/sendMessage')
+        .form(
+            {
+                'chat_id' : -1001126226406,
+                'text' : 'test automate'
+            }
+        );
+    }
 }
