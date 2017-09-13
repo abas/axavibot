@@ -5,6 +5,15 @@ module['exports'] = function axaviBot(hook) {
     var request = require('request');
     
     // function
+    // start
+    function Start(msg){
+        if(msg.includes('start')){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     function JerkFilter (msg){
         // update jika ada masukan
         var textSaru = [
@@ -92,7 +101,7 @@ module['exports'] = function axaviBot(hook) {
     //logically reply
 
     // Abas Command
-    if(AbasVerify().state && msg.includes('/')){
+    if(AbasVerify().state && msg.includes('/') && !Start(msg)){
         rep = AbasCommand(msg);
     }
 
