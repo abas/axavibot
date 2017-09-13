@@ -173,10 +173,10 @@ module['exports'] = function axaviBot(hook) {
             var op = Math.floor((Math.random() * 5) + 1);
             switch (op) {
                 case 1:
-                    rep = rep + '\n\njangan di start trs lah -_-';
+                    rep = '\n\njangan di start trs lah -_-';
                     break;
                 case 2:
-                    rep = rep + '\n\ntadi udah di start di start lagi hmm';
+                    rep = '\n\ntadi udah di start di start lagi hmm';
                     break;
                 case 3:
                     rep = 'auk ah! capek :v';
@@ -331,19 +331,9 @@ module['exports'] = function axaviBot(hook) {
     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
         .form(
             {
-            'chat_id': hook.params.message.chat.id,
-            'text': rep,
-
-        });
-    
-    var d = new Date()
-    if(d.getMinutes()==2){
-        request.post('https://api.telegram.org/bot'+hook.env.axavibot+'/sendMessage')
-        .form(
-            {
-                'chat_id' : hook.env.axaviGrupChat_id,
-                'text' : 'test automate'
+                'chat_id': hook.params.message.chat.id,
+                'text': rep,
             }
         );
-    }
+    
 }
