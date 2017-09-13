@@ -84,7 +84,11 @@ module['exports'] = function axaviBot(hook) {
         if(AbasVerify().state){
             if(msg.includes('jadwal')){
                 return 'hari ini jadwal nya ini kak'
-            }else{
+            }else if(msg.includes('anu')){
+                return 'anu apaan coba'
+            }
+            
+            else{
                 return 'yaelah kak, command nya belum di set -.-'
             }
         }else{
