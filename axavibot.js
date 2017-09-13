@@ -170,22 +170,32 @@ module['exports'] = function axaviBot(hook) {
             } else {
                 rep = 'hi! kak ' + hook.params.message.chat.first_name + ',... saya xavi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
             }
-            var op = Math.floor((Math.random() * 5) + 1);
+            var op = Math.floor((Math.random() * 10) + 1);
             switch (op) {
                 case 1:
-                    rep = '\n\njangan di start trs lah -_-';
+                    rep = rep + '\n\njangan di start trs lah -_-';
                     break;
                 case 2:
-                    rep = '\n\ntadi udah di start di start lagi hmm';
+                    rep = rep + '\n\ntadi udah di start di start lagi hmm';
                     break;
                 case 3:
-                    rep = 'auk ah! capek :v';
+                    rep = rep + 'auk ah! capek :v';
                     break;
                 case 4:
-                    rep = 'aku ngambek nih ._.';
+                    rep = rep + 'aku ngambek nih ._.';
                     break;
                 case 5:
-                    rep = '';break;
+                    rep = rep + '';break;
+                case 6:
+                    rep = rep + '';break;
+                case 7:
+                    rep = rep + '';break;
+                case 8:
+                    rep = rep + '';break;
+                case 9:
+                    rep = rep + '';break;
+                case 10:
+                    rep = rep + '';break;
             }
         } else if ((msg.includes('xa') || msg.includes('vi')) && msg.includes('?') || msg.includes('xavi?')) {
             if (msg.length > 4) {
