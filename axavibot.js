@@ -179,10 +179,10 @@ module['exports'] = function axaviBot(hook) {
                     rep = rep + '\n\ntadi udah di start di start lagi hmm';
                     break;
                 case 3:
-                    rep = rep + 'auk ah! capek :v';
+                    rep = rep + '\n\nauk ah! capek :v';
                     break;
                 case 4:
-                    rep = rep + 'aku ngambek nih ._.';
+                    rep = rep + '\n\naku ngambek nih ._.';
                     break;
                 case 5:
                     rep = rep + '';break;
