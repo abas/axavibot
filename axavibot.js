@@ -31,7 +31,7 @@ module['exports'] = function axaviBot(hook) {
         var Praise = [
             'cantik','ntik','cntk',
             'ganteng','gntg',
-            'keren','kren','kyen','keyen',
+            'keren','kren','kyen','keyen','keree',
             'cakep','ckep','cakp','cakeep','caakep',
             'mantab','ntab','mntab','mntb','mantap','ntap','mantp','mntap','mantaa'
         ];
