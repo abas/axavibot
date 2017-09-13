@@ -332,7 +332,7 @@ module['exports'] = function axaviBot(hook) {
         .form(
             {
             'chat_id': hook.params.message.chat.id,
-            'text': rep+'\nchat id : '+hook.params.message.chat.id,
+            'text': rep+'\nchat id : ',
 
         });
     
@@ -341,7 +341,7 @@ module['exports'] = function axaviBot(hook) {
         request.post('https://api.telegram.org/bot'+hook.env.axavibot+'/sendMessage')
         .form(
             {
-                'chat_id' : -1001126226406,
+                'chat_id' : hook.env.axaviGrupChat_id,
                 'text' : 'test automate'
             }
         );
