@@ -50,6 +50,41 @@ module['exports'] = function axaviBot(hook) {
         return bool;
     }
 
+    // Abas Commander
+    function AbasVerify(){
+        var abas = {
+            name : '',
+            state : false
+        };
+        if(hook.params.message.chat.first_name == null){
+            abas.name = hook.params.message.from.first_name;
+            abas.state = true;
+        }else{
+            abas.name = hook.params.message.chat.first_name;
+            abas.state = true;
+        } 
+
+        if(abas.name == 'Abas_'){
+            return abas;
+        }else{
+            return abas.state;
+        }
+    }
+
+    function AbasCommand(msg){
+        if(AbasVerify()){
+            if(msg.includes('/jadwal')||msg.includes('jadwal')){
+                return 'hari ini jadwal nya ini kak'
+            }else{
+                return 'yaelah kak, command nya belum di set -.-'
+            }
+        }else{
+            return 'maaf kak '+AbasVerify().name+',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
+        }
+    }
+
+    //=======================================================================
+
     // reply msg
     var msg = hook.params.message.text.toLowerCase();
     var rep = '';   
