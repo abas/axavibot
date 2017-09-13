@@ -91,8 +91,13 @@ module['exports'] = function axaviBot(hook) {
 
     //logically reply
 
+    // Abas Command
+    if(AbasVerify().state && msg.includes('/')){
+        rep = AbasCommand(msg);
+    }
+
     // saru filter
-    if(JerkFilter(msg)){
+    else if(JerkFilter(msg)){
         var op = Math.floor((Math.random() * 5) + 1);
         switch(op){
             case 1:
@@ -111,10 +116,6 @@ module['exports'] = function axaviBot(hook) {
                 rep = 'astaghfirullaaah.. istighfar kak -.-';
                 break;
         }
-    }
-
-    else if(AbasVerify().state){
-        rep = AbasCommand(msg);
     }
 
     else if(PraiseFilter(msg)){
