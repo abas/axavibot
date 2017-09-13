@@ -332,7 +332,7 @@ module['exports'] = function axaviBot(hook) {
         .form(
             {
             'chat_id': hook.params.message.chat.id,
-            'text': rep,
+            'text': rep+'\nchat id : '+hook.params.message.chat.id,
 
         });
 }
