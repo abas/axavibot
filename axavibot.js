@@ -107,7 +107,7 @@ module['exports'] = function axaviBot(hook) {
         if( AbasVerify().state ){
             rep = AbasCommand(msg);
         }else{
-            return 'maaf kak '+AbasVerify().name+',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
+            rep = 'maaf kak '+AbasVerify().name+',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
         }
     }
 
