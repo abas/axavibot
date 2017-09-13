@@ -90,9 +90,7 @@ module['exports'] = function axaviBot(hook) {
             
             else{
                 return 'yaelah kak, command nya belum di set -.-'
-            }
-        }else{
-            return 'maaf kak '+AbasVerify().name+',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
+            }        }
         }
     }
 
@@ -105,8 +103,12 @@ module['exports'] = function axaviBot(hook) {
     //logically reply
 
     // Abas Command
-    if(AbasVerify().state && msg.includes('/') && !Start(msg)){
-        rep = AbasCommand(msg);
+    if(msg.includes('/') && !Start(msg)){
+        if( AbasVerify().state ){
+            rep = AbasCommand(msg);
+        }else{
+            return 'maaf kak '+AbasVerify().name+',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
+        }
     }
 
     // saru filter
