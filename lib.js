@@ -84,7 +84,35 @@ var axaviModule = {
             idx++;
         }
         return bool;
-    }
+    },
+
+
+    // Abas Commander
+    AbasVerify : function(hook){
+        // if(hook.params.message.chat.first_name == null){
+        //     hook = hook.params.message.from.first_name;
+        // }else{
+        //     hook = hook.params.message.chat.first_name;
+        // } // to deploy
+
+        if(hook == 'Abas_'){
+            return true;
+        }else{
+            return false;
+        }
+    },
+
+    AbasCommand : function(hook,msg){
+        if(axaviModule.AbasVerify(hook)){
+            if(msg.includes('/jadwal')||msg.includes('jadwal')){
+                return 'hari ini jadwal nya ini kak'
+            }else{
+                return 'yaelah kak, command nya belum di set -.-'
+            }
+        }else{
+            return 'maaf kak '+hook+',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
+        }
+    },
 }
 
 module.exports = axaviModule;
