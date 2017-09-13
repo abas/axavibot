@@ -90,7 +90,7 @@ module['exports'] = function axaviBot(hook) {
             
             else{
                 return 'yaelah kak, command nya belum di set -.-'
-            }        }
+            }
         }
     }
 
