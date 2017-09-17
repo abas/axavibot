@@ -374,7 +374,7 @@ module['exports'] = function axaviBot(hook) {
         }
     }
 
-    function getFirsName(){
+    function getUsername(){
         if(hook.params.message.chat.first_name==null){
             return '@'+hook.params.message.from.username;
         }else{
@@ -383,7 +383,7 @@ module['exports'] = function axaviBot(hook) {
     }
 
     // cek is thats me?
-    if(getFirsName()==='Abas_'){
+    if(getUsername()==='@ahmadbasir'){
         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
             .form(
                 {
@@ -406,7 +406,7 @@ module['exports'] = function axaviBot(hook) {
         .form(
             {
                 'chat_id': 140760747,
-                'text': '[info]\n'+getFirsName()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg
+                'text': '[info]\n'+getUsername()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg
             }
         );   
     }
