@@ -72,7 +72,7 @@ module['exports'] = function axaviBot(hook) {
             abas.name = hook.params.message.chat.first_name;
             abas.state = true;
         } 
-
+        // verif is that me?
         if(abas.name == 'Abas_'){
             return abas;
         }else{
