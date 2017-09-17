@@ -387,7 +387,7 @@ module['exports'] = function axaviBot(hook) {
 
     // cek is thats me?
     if(getUsername()==='@ahmadbasir'){
-        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?parse_mode')
+        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?parse_mode=true')
             .form(
                 {
                     'chat_id': hook.params.message.chat.id,
