@@ -289,7 +289,7 @@ module['exports'] = function axaviBot(hook) {
 
         else if (msg.includes('hai')) {
             if(hook.params.message.chat.first_name == null){
-                rep = 'hai juga kak 😄';
+                rep = 'hai juga kak 😄'+hook.params.message.from.first_name;
             }else{
                 rep = 'hai juga kak ' + hook.params.message.chat.first_name + ' 😄';
             }
@@ -405,7 +405,7 @@ module['exports'] = function axaviBot(hook) {
                     'text': rep,
                 }
             );
-            
+
         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
         .form(
             {
