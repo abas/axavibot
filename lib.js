@@ -139,6 +139,39 @@ var axaviModule = {
         if(msg.includes('kenal')||(msg.includes('kenal')&&msg.includes('?'))){
             return sendRep[op];
         }
+    },
+    
+    IsMissed : function(msg){
+        var missed = false;
+        if(msg.includes('kangen')){
+            missed = true;
+        }
+        return missed;
+    },
+    
+    MissingOne : function(msg){
+        var sendRep = [
+            'iya dia juga kangen,.. mungkin XD',
+            'ciee kangen dia cieee',
+            'emang dia itu ngangenin hihi',
+            'kangen ya telfon lah kak',
+            'dia bosen dikangenin hmm',
+            'makan tuh kangen biar gemuk :p',
+            'orang kayak dia dikangenin? wkwk',
+            'yaelah klo kangen ya ngomong langsung lah -.-'
+        ];
+        var op = Math.floor((Math.random() * sendRep.length) + 1);
+        if(msg.includes('kamu')||msg.includes('kmu')){
+           var sender = sendRep[op].replace('dia','xavi') 
+           return sender;
+        }else{
+            return sendRep[op];
+        }
+    },
+
+    Emoji : {
+        hehe:'😁',wkwk:'😆',haha:'😂',hadeh:'🙃',suka:'😊',wlee:'😜',lopeU:'😘',cool:'😎',
+        marah:'😡',hm:'😐',ha:'🙄',sedih:'😢',kaget:'😱'
     }
 }
 
