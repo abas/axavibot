@@ -139,7 +139,7 @@ module['exports'] = function axaviBot(hook) {
             missed = true;
         }
         return missed;
-    },
+    }
     
     function MissingOne(msg){
         var sendRep = [
