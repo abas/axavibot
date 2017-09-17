@@ -126,7 +126,36 @@ module['exports'] = function axaviBot(hook) {
 
         var op = Math.floor((Math.random() * sendRep.length) + 1);
         if(msg.includes('aku')){
-            return sendRep[op].replace('dia','kamu')
+            var convSendRep = sendRep[op].replace('dia','kakak')
+            return convSendRep;
+        }else{
+            return sendRep[op];
+        }
+    }
+
+    function IsMissed(msg){
+        var missed = false;
+        if(msg.includes('kangen')){
+            missed = true;
+        }
+        return missed;
+    },
+    
+    function MissingOne(msg){
+        var sendRep = [
+            'iya dia juga kangen,.. mungkin XD',
+            'ciee kangen dia cieee',
+            'emang dia itu ngangenin hihi',
+            'kangen ya telfon lah kak',
+            'dia bosen dikangenin hmm',
+            'makan tuh kangen biar gemuk :p',
+            'orang kayak dia dikangenin? wkwk',
+            'yaelah klo kangen ya ngomong langsung lah -.-'
+        ];
+        var op = Math.floor((Math.random() * sendRep.length) + 1);
+        if(msg.includes('kamu')||msg.includes('kmu')){
+           var sender = sendRep[op].replace('dia','xavi') 
+           return sender;
         }else{
             return sendRep[op];
         }
@@ -173,6 +202,10 @@ module['exports'] = function axaviBot(hook) {
 
     else if(msg.includes('kenal')||(msg.includes('kenal')&&msg.includes('?'))){
         rep = KnowOne(msg);
+    }
+
+    else if(IsMissed(msg)){
+        rep = MissingOne(msg);
     }
 
     else if(PraiseFilter(msg)){
