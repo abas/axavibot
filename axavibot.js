@@ -94,7 +94,8 @@ module['exports'] = function axaviBot(hook) {
         }
     }
 
-    function KnowOne(){
+    function KnowOne(msg){
+        var person = ['kmu','dia']
         var sendRep = [
             
             'iya tau, kenapa emang?',
@@ -116,9 +117,11 @@ module['exports'] = function axaviBot(hook) {
         ];
 
         var op = Math.floor((Math.random() * sendRep.length) + 1);
-        // if(msg.includes('kenal')||(msg.includes('kenal')&&msg.includes('?'))){
-        // }
-        return sendRep[op];
+        if(msg.includes('aku')){
+            return sendRep[op].replace('dia','kamu')
+        }else{
+            return sendRep[op];
+        }
     }
 
     //=======================================================================
@@ -161,7 +164,7 @@ module['exports'] = function axaviBot(hook) {
     }
 
     else if(msg.includes('kenal')||(msg.includes('kenal')&&msg.includes('?'))){
-        rep = KnowOne();
+        rep = KnowOne(msg);
     }
 
     else if(PraiseFilter(msg)){
