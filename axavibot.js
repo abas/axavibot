@@ -3,6 +3,12 @@ module['exports'] = function axaviBot(hook) {
 
     // impor modul request
     var request = require('request');
+
+    // local Object
+    var emoji = {
+        hehe:'😁',wkwk:'😆',haha:'😂',hadeh:'🙃',suka:'😊',wlee:'😜',lopeU:'😘',cool:'😎',
+        marah:'😡',hm:'😐',ha:'🙄',sedih:'😢',kaget:'😱'
+    }
     
     // function
     // start
