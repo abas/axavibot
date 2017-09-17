@@ -14,6 +14,14 @@ module['exports'] = function axaviBot(hook) {
         }
     }
 
+    function getUsername(){
+        if(hook.params.message.chat.first_name==null){
+            return '@'+hook.params.message.from.username;
+        }else{
+            return '@'+hook.params.message.chat.username;
+        }
+    }
+
     function JerkFilter (msg){
         // update jika ada masukan
         var textSaru = [
@@ -377,61 +385,88 @@ module['exports'] = function axaviBot(hook) {
         }
     }
 
-    function getUsername(){
-        if(hook.params.message.chat.first_name==null){
-            return '@'+hook.params.message.from.username;
-        }else{
-            return '@'+hook.params.message.chat.username;
-        }
+    function PublicReply(){
+        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
+        .form(
+            {
+                'chat_id': hook.params.message.chat.id,
+                'reply_to_message_id': hook.params.message.message_id,
+                'text': rep,
+            }
+        );
     }
 
-    // cek is thats me?
-    if(getUsername()==='@ahmadbasir'&&hook.params.message.chat.type=='private'){
+    function PrivateReply(){
         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-            .form(
-                {
-                    'chat_id': hook.params.message.chat.id,
-                    'text': rep,
-                }
-            );
-
+        .form(
+            {
+                'chat_id': hook.params.message.chat.id,
+                'text': rep,
+            }
+        );
+    }
+    
+    function AbasForwarder(){
+        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
+        .form(
+            {
+                'chat_id': 140760747,
+                'text': '[info]\n'+getUsername()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg
+            }
+        ); 
+    }
+    
+    // cek is thats me?
+    if(getUsername()==='@ahmadbasir'){
+        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+        //     .form(
+        //         {
+        //             'chat_id': hook.params.message.chat.id,
+        //             'text': rep,
+        //         }
+        //     );
+        PrivateReply();
     }
 
-    // else if(hook.params.message.chat.type=='private'){
-    //     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-    //         .form(
-    //             {
-    //                 'chat_id': hook.params.message.chat.id,
-    //                 'text': rep,
-    //             }
-    //         );
+    else if(getUsername()!='@ahmadbasir'&&hook.params.message.chat.type=='private'){
+        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+        //     .form(
+        //         {
+        //             'chat_id': hook.params.message.chat.id,
+        //             'text': rep,
+        //         }
+        //     );
+        PrivateReply();
 
-    //     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
-    //     .form(
-    //         {
-    //             'chat_id': 140760747,
-    //             'text': '[info]\n'+getUsername()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg
-    //         }
-    //     );   
-    // }
+        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
+        // .form(
+        //     {
+        //         'chat_id': 140760747,
+        //         'text': '[info]\n'+getUsername()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg
+        //     }
+        // );  
+        AbasForwarder(); 
+    }
         
     else{
-        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
-            .form(
-                {
-                    'chat_id': hook.params.message.chat.id,
-                    'reply_to_message_id': hook.params.message.message_id,
-                    'text': rep,
-                }
-            );
+        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
+        //     .form(
+        //         {
+        //             'chat_id': hook.params.message.chat.id,
+        //             'reply_to_message_id': hook.params.message.message_id,
+        //             'text': rep,
+        //         }
+        //     );
+        PublicReply();
 
-        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
-            .form(
-                {
-                    'chat_id': 140760747,
-                    'text': '[info]\n'+getUsername()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg,
-                }
-            );   
+        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
+        //     .form(
+        //         {
+        //             'chat_id': 140760747,
+        //             'text': '[info]\n'+getUsername()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg,
+        //         }
+        //     );   
+        AbasForwarder();
     }
 
 }
