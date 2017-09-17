@@ -383,6 +383,21 @@ module['exports'] = function axaviBot(hook) {
             }
         );
         
-    request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?chat_id=140760747&text='+msg);
+    var getFirsName = function(){
+        if(hook.params.message.chat.id==null){
+            return hook.params.message.from.first_name;
+        }else{
+            return hook.params.message.chat.first_name
+        }
+    }
+
+    request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage)
+        .form(
+            {
+                'chat_id': hook.params.message.chat.id,
+                'text': getFirsName+' : '+hook.params.message.chat.id+' \nmsg :'+msg
+
+            }
+        );
     
 }
