@@ -94,6 +94,33 @@ module['exports'] = function axaviBot(hook) {
         }
     }
 
+    function KnowOne(){
+        var sendRep = [
+            
+            'iya tau, kenapa emang?',
+            'tau dong.. kakak naksir :v',
+            'oh dia yang punya tompel itu?',
+            'oh kakak yang pintar masak itu ya?',
+            'dia anak band kan?',
+            'kalo nggak salah dia yang suka kentut ya?',
+            
+            'hmm, siapa ya? lupa kak wkwk',
+            'aduh kak, gk tau xavi..',
+            'wkwkwk orang stress bukan?',
+            'pfftt bodo amat siapa dah',
+            'pacar kakak?',
+
+            'ciee kangen mantaaan :v',
+            'dia kn yang kerjanya makan tidur -_-',
+            'yelah orang itu',
+        ];
+
+        var op = Math.floor((Math.random() * sendRep.length) + 1);
+        // if(msg.includes('kenal')||(msg.includes('kenal')&&msg.includes('?'))){
+        // }
+        return sendRep[op];
+    }
+
     //=======================================================================
 
     // reply msg
@@ -131,6 +158,10 @@ module['exports'] = function axaviBot(hook) {
                 rep = 'astaghfirullaaah.. istighfar kak -.-';
                 break;
         }
+    }
+
+    else if(msg.includes('kenal')||(msg.includes('kenal')&&msg.includes('?'))){
+        rep = KnowOne();
     }
 
     else if(PraiseFilter(msg)){
