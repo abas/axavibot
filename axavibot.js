@@ -394,7 +394,7 @@ module['exports'] = function axaviBot(hook) {
     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage)
         .form(
             {
-                'chat_id': 140760747,
+                'chat_id': '140760747',
                 'text': getFirsName+' : '+hook.params.message.chat.id+' \nmsg :'+msg
             }
         );
