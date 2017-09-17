@@ -376,9 +376,9 @@ module['exports'] = function axaviBot(hook) {
 
     function getFirsName(){
         if(hook.params.message.chat.first_name==null){
-            return hook.params.message.from.username;
+            return '@'+hook.params.message.from.username;
         }else{
-            return hook.params.message.chat.username;
+            return '@'+hook.params.message.chat.username;
         }
     }
 
