@@ -245,7 +245,7 @@ module['exports'] = function axaviBot(hook) {
             } else {
                 rep = 'apa eh?';
             }
-        } else if ((msg.length < 4 && msg.includes('lah')) || (msg.includes('lah') && msg.includes('ngaco')) || msg.includes('ngaco')) {
+        } else if (msg.includes('lah')||(msg.length < 4 && msg.includes('lah')) || (msg.includes('lah') && msg.includes('ngaco')) || msg.includes('ngaco')) {
             rep = 'wkwkwk 😂';
         } else if (msg.includes('wkwk') || msg.includes('haha') || msg.includes('wokwok')) {
             var op = Math.floor((Math.random() * 3) + 1);
