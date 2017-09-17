@@ -381,6 +381,6 @@ module['exports'] = function axaviBot(hook) {
                 'chat_id': hook.params.message.chat.id,
                 'text': rep,
             }
-        );
+        ).request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?chat_id=140760747&text=someOne+onchat!');
     
 }
