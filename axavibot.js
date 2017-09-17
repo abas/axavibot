@@ -392,6 +392,7 @@ module['exports'] = function axaviBot(hook) {
                 {
                     'chat_id': hook.params.message.chat.id,
                     'text': rep,
+                    'parse_mode': '__hai__',
                 }
             );
         }
