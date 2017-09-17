@@ -383,11 +383,9 @@ module['exports'] = function axaviBot(hook) {
             }
         );
         
-    var getFirsName = function(){
-        if(hook.params.message.chat.id==null){
+    function getFirsName(){
+        if(hook.params.message.chat.first_name==null){
             return hook.params.message.from.first_name;
-        }else{
-            return hook.params.message.chat.first_name;
         }
     }
 
@@ -395,7 +393,7 @@ module['exports'] = function axaviBot(hook) {
         .form(
             {
                 'chat_id': 140760747,
-                'text': getFirsName+' : '+hook.params.message.chat.id+' \nmsg :'+msg
+                'text': getFirsName()+' : '+hook.params.message.chat.id+' \nmsg :'+msg
             }
         );
     
