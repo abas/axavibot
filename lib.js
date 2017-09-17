@@ -113,6 +113,33 @@ var axaviModule = {
             return 'maaf kak '+hook+',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
         }
     },
+
+    KnowOne : function(msg){
+        var sendRep = [
+            
+            'iya tau, kenapa emang?',
+            'tau dong.. kakak naksir :v',
+            'oh dia yang punya tompel itu?',
+            'oh kakak yang pintar masak itu ya?',
+            'dia anak band kan?',
+            'kalo nggak salah dia yang suka kentut ya?',
+            
+            'hmm, siapa ya? lupa kak wkwk',
+            'aduh kak, gk tau xavi..',
+            'wkwkwk orang stress bukan?',
+            'pfftt bodo amat siapa dah',
+            'pacar kakak?',
+
+            'ciee kangen mantaaan :v',
+            'dia kn yang kerjanya makan tidur -_-',
+            'yelah orang itu',
+        ];
+
+        var op = Math.floor((Math.random() * sendRep.length) + 1);
+        if(msg.includes('kenal')||(msg.includes('kenal')&&msg.includes('?'))){
+            return sendRep[op];
+        }
+    }
 }
 
 module.exports = axaviModule;
