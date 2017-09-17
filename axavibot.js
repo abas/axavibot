@@ -385,6 +385,7 @@ module['exports'] = function axaviBot(hook) {
         }
     }
 
+    // reply function
     function PublicReply(){
         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
         .form(
@@ -416,56 +417,19 @@ module['exports'] = function axaviBot(hook) {
         ); 
     }
     
+    // send messages
     // cek is thats me?
     if(getUsername()==='@ahmadbasir'){
-        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-        //     .form(
-        //         {
-        //             'chat_id': hook.params.message.chat.id,
-        //             'text': rep,
-        //         }
-        //     );
         PrivateReply();
     }
-
-    else if(getUsername()!='@ahmadbasir'&&hook.params.message.chat.type=='private'){
-        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-        //     .form(
-        //         {
-        //             'chat_id': hook.params.message.chat.id,
-        //             'text': rep,
-        //         }
-        //     );
+    // cek is not me and chat is private chat
+    else if(hook.params.message.chat.type=='private'){
         PrivateReply();
-
-        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
-        // .form(
-        //     {
-        //         'chat_id': 140760747,
-        //         'text': '[info]\n'+getUsername()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg
-        //     }
-        // );  
         AbasForwarder(); 
     }
-        
+    // global chat like grup
     else{
-        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
-        //     .form(
-        //         {
-        //             'chat_id': hook.params.message.chat.id,
-        //             'reply_to_message_id': hook.params.message.message_id,
-        //             'text': rep,
-        //         }
-        //     );
-        PublicReply();
-
-        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
-        //     .form(
-        //         {
-        //             'chat_id': 140760747,
-        //             'text': '[info]\n'+getUsername()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg,
-        //         }
-        //     );   
+        PublicReply();  
         AbasForwarder();
     }
 
