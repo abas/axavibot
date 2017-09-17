@@ -374,15 +374,6 @@ module['exports'] = function axaviBot(hook) {
         }
     }
 
-    // buat atau kirim request ke bot telegram
-    request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
-        .form(
-            {
-                'chat_id': hook.params.message.chat.id,
-                'text': rep,
-            }
-        );
-        
     function getFirsName(){
         if(hook.params.message.chat.first_name==null){
             return hook.params.message.from.first_name;
@@ -391,12 +382,33 @@ module['exports'] = function axaviBot(hook) {
         }
     }
 
-    request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
+    // cek is thats me?
+    if(getFirsName()==='Abas_'){
+        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
+            .form(
+                {
+                    'chat_id': hook.params.message.chat.id,
+                    'text': rep,
+                }
+            );
+        }
+        
+    else{
+        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
+            .form(
+                {
+                    'chat_id': hook.params.message.chat.id,
+                    'text': rep,
+                }
+            );
+
+        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
         .form(
             {
                 'chat_id': 140760747,
-                'text': getFirsName()+' : '+hook.params.message.chat.id+' \nmsg :'+msg
+                'text': '[info]\n'+getFirsName()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg
             }
-        );
-    
+        );   
+    }
+
 }
