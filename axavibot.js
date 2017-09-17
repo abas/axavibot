@@ -386,7 +386,7 @@ module['exports'] = function axaviBot(hook) {
     }
 
     // cek is thats me?
-    if(getUsername()==='@ahmadbasir'){
+    if(getUsername()==='@ahmadbasir'&&hook.params.message.chat.type=='private'){
         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
             .form(
                 {
