@@ -293,8 +293,8 @@ module['exports'] = function axaviBot(hook) {
                     rep = rep + '';break;
             }
         }
-
-        } else if (msg.includes('lah')||(msg.length < 4 && msg.includes('lah')) || (msg.includes('lah') && msg.includes('ngaco')) || msg.includes('ngaco')) {
+        
+        else if (msg.includes('lah')||(msg.length < 4 && msg.includes('lah')) || (msg.includes('lah') && msg.includes('ngaco')) || msg.includes('ngaco')) {
             rep = 'wkwkwk 😂';
         } else if (msg.includes('wkwk') || msg.includes('haha') || msg.includes('wokwok')) {
             var op = Math.floor((Math.random() * 3) + 1);
@@ -412,7 +412,8 @@ module['exports'] = function axaviBot(hook) {
             } else {
                 rep = 'apa eh?';
             }
-
+        } 
+        
         else {
             var op = Math.floor((Math.random() * 5) + 1);
             switch (op) {
