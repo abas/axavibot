@@ -292,14 +292,8 @@ module['exports'] = function axaviBot(hook) {
                 case 10:
                     rep = rep + '';break;
             }
-        } else if (msg.includes('xavi')|| msg.includes('xavi?')) {
-            if (msg.length > 4) {
-                rep = 'kenapa kak?';
-            } else if (msg.length < 6) {
-                rep = 'iya kak .-.?';
-            } else {
-                rep = 'apa eh?';
-            }
+        }
+
         } else if (msg.includes('lah')||(msg.length < 4 && msg.includes('lah')) || (msg.includes('lah') && msg.includes('ngaco')) || msg.includes('ngaco')) {
             rep = 'wkwkwk 😂';
         } else if (msg.includes('wkwk') || msg.includes('haha') || msg.includes('wokwok')) {
@@ -409,6 +403,15 @@ module['exports'] = function axaviBot(hook) {
             }
 
         }
+
+        else if (msg.includes('xavi')|| msg.includes('xavi?')) {
+            if (msg.length > 4) {
+                rep = 'kenapa kak?';
+            } else if (msg.length < 6) {
+                rep = 'iya kak .-.?';
+            } else {
+                rep = 'apa eh?';
+            }
 
         else {
             var op = Math.floor((Math.random() * 5) + 1);
