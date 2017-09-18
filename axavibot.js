@@ -284,7 +284,7 @@ module['exports'] = function axaviBot(hook) {
                 case 10:
                     rep = rep + '';break;
             }
-        } else if ((msg.includes('xa') || msg.includes('vi')) && msg.includes('?') || msg.includes('xavi?')) {
+        } else if (msg.includes('xavi')|| msg.includes('xavi?')) {
             if (msg.length > 4) {
                 rep = 'kenapa kak?';
             } else if (msg.length < 6) {
