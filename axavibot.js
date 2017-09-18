@@ -158,7 +158,7 @@ module['exports'] = function axaviBot(hook) {
             'orang kayak dia dikangenin? wkwk',
             'yaelah klo kangen ya ngomong langsung lah -.-'
         ];
-        var op = Math.floor((Math.random() * sendRep.length) + 1);
+        var op = Math.floor((Math.random() * sendRep.length));
         if(msg.includes('kamu')||msg.includes('kmu')){
             var sender = ''
             if(sendRep[op].includes('dia')){
