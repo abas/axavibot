@@ -31,9 +31,12 @@ module['exports'] = function axaviBot(hook) {
     function JerkFilter (msg){
         // update jika ada masukan
         var textSaru = [
-            'cuk','cok','coeg','su','asu','anjing','njing','anying','nying','anjng',
-            'fuck','fak','fuk','kontol','kontil','goblok','bodo','bodoh','tolol','kntl',
-            'tai','tae','silit','bokong','ndas','ndes','bento','koplo','suek','nds','fck',
+            'coeg','asu','anjing','njing','anying','nying','anjng','fuck','keparat',
+            'fuk','kontol','kontil','goblok','bodo','bodoh','tolol','kntl','tai','tae',
+            'silit','bokong','ndas','ndes','bento','koplo','suek','nds','fck','kmprt','pejuh',
+            'titit','memek','kmcl','lonte','lnte','itil','itel','itl','kprt','jembut','mbut',
+            'asshole','asshl','bgst','bangsat','bangsut','telek','tembelek','sex','gawok',
+            'bosok','bangke'
         ];
 
         var distance = textSaru.length;
