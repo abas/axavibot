@@ -10,3 +10,7 @@ console.log(xavi.KnowOne('kenal'))
 console.log(xavi.IsMissed('kangen'))
 console.log(xavi.MissingOne('kamu kangen'))
 console.log(xavi.Emoji.haha)
+
+var op = Math.floor((Math.random()));
+
+console.log(op);

@@ -1,4 +1,8 @@
 var axaviModule = {
+    Emoji : {
+        hehe:'😁',wkwk:'😆',haha:'😂',hadeh:'🙃',suka:'😊',wlee:'😜',lopeU:'😘',cool:'😎',
+        marah:'😡',hm:'😐',ha:'🙄',sedih:'😢',kaget:'😱'
+    },
 
     JerkFilter : function(msg){
         // update jika ada masukan
@@ -169,9 +173,10 @@ var axaviModule = {
         }
     },
 
-    Emoji : {
-        hehe:'😁',wkwk:'😆',haha:'😂',hadeh:'🙃',suka:'😊',wlee:'😜',lopeU:'😘',cool:'😎',
-        marah:'😡',hm:'😐',ha:'🙄',sedih:'😢',kaget:'😱'
+    GreetingMsg : function(msg){
+        var sendRep = [
+            'selamat'
+        ];
     }
 }
 
