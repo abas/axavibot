@@ -160,8 +160,13 @@ module['exports'] = function axaviBot(hook) {
         ];
         var op = Math.floor((Math.random() * sendRep.length) + 1);
         if(msg.includes('kamu')||msg.includes('kmu')){
-           var sender = sendRep[op].replace('dia','xavi') 
-           return sender;
+            var sender = ''
+            if(sendRep[op].includes('dia')){
+                sender = sendRep[op].replace('dia','xavi') 
+                return sender;
+            }else{
+                return sendRep[op];
+            }
         }else{
             return sendRep[op];
         }
