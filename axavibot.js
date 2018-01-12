@@ -267,7 +267,7 @@ module['exports'] = function axaviBot(hook) {
                 // rep = 'hi! kak ' + hook.params.message.chat.first_name + ',... saya elfi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
                 rep = 'hi! kak,... saya elfi 😄';
             }
-            var op = Math.floor((Math.random() * 10) + 1);
+            var op = Math.floor((Math.random() * 6) + 1);
             switch (op) {
                 case 1:
                     rep = rep + '\n\njangan di start trs lah -_-';
@@ -276,22 +276,14 @@ module['exports'] = function axaviBot(hook) {
                     rep = rep + '\n\ntadi udah di start di start lagi hmm';
                     break;
                 case 3:
-                    rep = rep + '\n\nauk ah! capek :v';
+                    rep = rep + '\n\nauk ah! capek ._. di start mulu';
                     break;
                 case 4:
-                    rep = rep + '\n\naku ngambek nih ._.';
+                    rep = rep + '\n\njangan di start terus dong, aku ngambek nih ._.';
                     break;
                 case 5:
                     rep = rep + '';break;
                 case 6:
-                    rep = rep + '';break;
-                case 7:
-                    rep = rep + '';break;
-                case 8:
-                    rep = rep + '';break;
-                case 9:
-                    rep = rep + '';break;
-                case 10:
                     rep = rep + '';break;
             }
         }
