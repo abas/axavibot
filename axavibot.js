@@ -261,9 +261,11 @@ module['exports'] = function axaviBot(hook) {
     else{
         if (msg.includes('/start')) {
             if (hook.params.message.chat.first_name == null) {
-                rep = 'hi! kak '+hook.params.message.from.first_name+' saya elfi 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
+                // rep = 'hi! kak '+hook.params.message.from.first_name+' saya elfi 😄';
+                rep = 'hi! kak, perkenalkan saya elfi 😄';
             } else {
-                rep = 'hi! kak ' + hook.params.message.chat.first_name + ',... saya elfi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
+                // rep = 'hi! kak ' + hook.params.message.chat.first_name + ',... saya elfi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
+                rep = 'hi! kak,... saya elfi 😄';
             }
             var op = Math.floor((Math.random() * 10) + 1);
             switch (op) {
