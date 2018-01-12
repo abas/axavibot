@@ -123,7 +123,7 @@ module['exports'] = function axaviBot(hook) {
             'kalo nggak salah dia yang suka kentut ya?',
             
             'hmm, siapa ya? lupa kak wkwk',
-            'aduh kak, gk tau xavi..',
+            'aduh kak, gk tau elfi..',
             'wkwkwk orang stress bukan?',
             'pfftt bodo amat siapa dah',
             'pacar kakak?',
@@ -165,7 +165,7 @@ module['exports'] = function axaviBot(hook) {
         if(msg.includes('kamu')||msg.includes('kmu')){
             var sender = ''
             if(sendRep[op].includes('dia')){
-                sender = sendRep[op].replace('dia','xavi') 
+                sender = sendRep[op].replace('dia','elfi') 
                 return sender;
             }else{
                 return sendRep[op];
@@ -261,9 +261,9 @@ module['exports'] = function axaviBot(hook) {
     else{
         if (msg.includes('/start')) {
             if (hook.params.message.chat.first_name == null) {
-                rep = 'hi! kak '+hook.params.message.from.first_name+' saya xavi 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
+                rep = 'hi! kak '+hook.params.message.from.first_name+' saya elfi 😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
             } else {
-                rep = 'hi! kak ' + hook.params.message.chat.first_name + ',... saya xavi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
+                rep = 'hi! kak ' + hook.params.message.chat.first_name + ',... saya elfi  😄, bot yg di buat kak @ahmadbasir yang sedang suwung 😅 hehe';
             }
             var op = Math.floor((Math.random() * 10) + 1);
             switch (op) {
@@ -343,7 +343,7 @@ module['exports'] = function axaviBot(hook) {
                 rep = 'hai juga kak ' + hook.params.message.chat.first_name + ' 😄';
             }
         } else if (msg.includes('apa kabar') || msg.includes('apa kabar?') || msg.includes('kabar') || msg.includes('kabar?')) {
-            rep = 'xavi selalu sehat :D\nkakak sendiri gimana? :D';
+            rep = 'elfi selalu sehat :D\nkakak sendiri gimana? :D';
         } else if (msg.includes('sehat') || msg.includes('alhamdulillaah') || msg.includes('baik')) {
             rep = 'alhamdulillaaah :)';
         } 
@@ -404,7 +404,7 @@ module['exports'] = function axaviBot(hook) {
 
         }
 
-        else if (msg.includes('xavi')|| msg.includes('xavi?')) {
+        else if (msg.includes('elfi')|| msg.includes('elfi?')) {
             if (msg.length > 4) {
                 rep = 'kenapa kak?';
             } else if (msg.length < 6) {
@@ -421,13 +421,13 @@ module['exports'] = function axaviBot(hook) {
                     rep = 'maaf kak, aku masih tahap belajar.. belum mengerti apa itu ' + hook.params.message.text + ' 😅';
                     break;
                 case 2:
-                    rep = 'xavi gk tau apa itu ' + hook.params.message.text + ' 😐 hmm';
+                    rep = 'elfi gk tau apa itu ' + hook.params.message.text + ' 😐 hmm';
                     break;
                 case 3:
-                    rep = 'xavi gk ngerti 😑';
+                    rep = 'elfi gk ngerti 😑';
                     break;
                 case 4:
-                    rep = 'ahaha xavi beneran gk ngerti 😂';
+                    rep = 'ahaha elfi beneran gk ngerti 😂';
                     break;
                 case 5:
                     rep = 'mbuh ah! gk tauk! 😶';
