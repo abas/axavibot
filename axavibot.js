@@ -124,7 +124,7 @@ module['exports'] = function axaviBot(hook) {
                             reject(err);
                         } else {
                             resolve(res);
-                            return res;
+                            return res.gender;
                         }
                     });
                 });
