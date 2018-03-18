@@ -204,11 +204,12 @@ module['exports'] = function axaviBot(hook) {
         request('https://gender-api.com/get?name='+ name +'&key=' + genderapikey, (err, res, body) => {
             if (!err && res.statusCode == 200) {
                 var data = JSON.parse(body);
-                request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-                    .form({
-                        'chat_id': hook.params.message.chat.id,
-                        'text': data.gender,
-                    });
+                // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+                //     .form({
+                //         'chat_id': hook.params.message.chat.id,
+                //         'text': data.gender,
+                //     });
+                return data.gender;
             }
         });
     }
@@ -226,7 +227,10 @@ module['exports'] = function axaviBot(hook) {
         if (AbasVerify().state) {
             rep = AbasCommand(msg);
         } else {
-            rep = 'maaf kak ' + AbasVerify().name + ',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
+            if(msg.includes('gender')){
+                getGender(msg);
+            }
+            // rep = 'maaf kak ' + AbasVerify().name + ',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
         }
     }
 
