@@ -117,19 +117,6 @@ module['exports'] = function axaviBot(hook) {
                 return 'hari ini jadwal nya ini kak'
             } else if (msg.includes('anu')) {
                 return 'anu apaan coba'
-            } else if (msg.includes('gender')) {
-                request('https://gender-api.com/get?name=elizabeth&key=' + genderapikey, (err, res, body) => {
-                    if (!err && res.statusCode == 200) {
-                        var data = JSON.parse(body);
-                        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-                            .form({
-                                'chat_id': hook.params.message.chat.id,
-                                'text': data.gender,
-                            });
-                    }
-                    return err;
-                });
-
             } else {
                 return 'yaelah kak, command nya belum di set -.-'
             }
@@ -198,6 +185,30 @@ module['exports'] = function axaviBot(hook) {
         } else {
             return sendRep[op];
         }
+    }
+
+    function getGender(msg) {
+        var splitMsg = str.split(" ")
+        var name = ""
+        if(splitMsg.length > 2){
+            for(i=1;i<splitMsg.length;i++){
+                if(splitMsg[i+1] == null){
+                    name = name+splitMsg[i];
+                }else{
+                    name = name+splitMsg[i]+" ";
+                }
+            }
+        }
+        request('https://gender-api.com/get?name='+ name +'&key=' + genderapikey, (err, res, body) => {
+            if (!err && res.statusCode == 200) {
+                var data = JSON.parse(body);
+                request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+                    .form({
+                        'chat_id': hook.params.message.chat.id,
+                        'text': data.gender,
+                    });
+            }
+        });
     }
 
     //=======================================================================
