@@ -118,30 +118,26 @@ module['exports'] = function axaviBot(hook) {
             } else if (msg.includes('anu')) {
                 return 'anu apaan coba'
             } else if (msg.includes('gender')) {
-                // var data = new Promise(function (resolve, reject) {
-                //     get('https://gender-api.com/get?name=elizabeth&key=' + genderapikey, function (err, res) {
-                //         if (err) {
-                //             return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
-                //             reject(err);
-                //         } else {
-                //             return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
-                //             resolve(res);
-                //         }
-                //     });
-                // });
-
-                // if(data == null){
-                //     return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
-                // }else{
-                //     return data.gender;
-                // }
-                request('https://gender-api.com/get?name=elizabeth&key=' + genderapikey, {
-                    json: true
-                }, (err, res, body) => {
-                    if (err) {
-                        return err;
+                request(simiUrl, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        var data = JSON.parse(body);
+                        request.post('https://api.telegram.org/bot' + hook.env.iyan_chan_bot + '/sendMessage')
+                        .form({
+                            "chat_id": hook.params.message.chat.id,
+                            "text": data.response
+                        });
                     }
-                    return " "+body.url + body.explanation;
+                });
+                request('https://gender-api.com/get?name=elizabeth&key=' + genderapikey, (err, res, body) => {
+                    if (!err && res.statusCode == 200) {
+                        var data = JSON.parse(body);
+                        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+                            .form({
+                                'chat_id': hook.params.message.chat.id,
+                                'text': data.gender,
+                            });
+                    }
+                    return err;
                 });
 
             } else {
@@ -394,7 +390,7 @@ module['exports'] = function axaviBot(hook) {
                     rep = 'lagi boker 😂';
                     break;
                 case 5:
-                    rep = 'kepoooO '+emoji.wlee;
+                    rep = 'kepoooO ' + emoji.wlee;
                     break;
             }
         } else if (msg.includes('siapa?') || msg.includes('siapa')) {
@@ -452,7 +448,7 @@ module['exports'] = function axaviBot(hook) {
                     rep = 'mbuh ah! gk tauk! 😶';
                     break;
                 case 6:
-                    rep = 'apa itu '+msg+'?'+emoji.hm;
+                    rep = 'apa itu ' + msg + '?' + emoji.hm;
                     break;
             }
         }
