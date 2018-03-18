@@ -198,6 +198,8 @@ module['exports'] = function axaviBot(hook) {
                     name = name+splitMsg[i]+" ";
                 }
             }
+        }else{
+            name = splitMsg[1];
         }
         request('https://gender-api.com/get?name='+ name +'&key=' + genderapikey, (err, res, body) => {
             if (!err && res.statusCode == 200) {
