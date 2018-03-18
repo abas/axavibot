@@ -121,8 +121,10 @@ module['exports'] = function axaviBot(hook) {
                 var data = new Promise(function (resolve, reject) {
                     get('https://gender-api.com/get?name=elizabeth&key=' + genderapikey, function (err, res) {
                         if (err) {
+                            return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
                             reject(err);
                         } else {
+                            return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
                             resolve(res);
                         }
                     });
