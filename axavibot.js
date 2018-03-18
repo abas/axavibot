@@ -204,17 +204,17 @@ module['exports'] = function axaviBot(hook) {
         }else{
             name = splitMsg[1];
         }
-        request('https://gender-api.com/get?name='+ name +'&key=' + genderapikey, (err, res, body) => {
-            if (!err && res.statusCode == 200) {
-                var data = JSON.parse(body);
-                // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-                //     .form({
-                //         'chat_id': hook.params.message.chat.id,
-                //         'text': data.gender,
-                //     });
-                return data.gender;
-            }
-        });
+        // request('https://gender-api.com/get?name='+ name +'&key=' + genderapikey, (err, res, body) => {
+        //     if (!err && res.statusCode == 200) {
+        //         var data = JSON.parse(body);
+        //         // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+        //         //     .form({
+        //         //         'chat_id': hook.params.message.chat.id,
+        //         //         'text': data.gender,
+        //         //     });
+        //         return data.gender;
+        //     }
+        // });
     }
 
     //=======================================================================
