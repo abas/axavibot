@@ -210,7 +210,15 @@ module['exports'] = function axaviBot(hook) {
                 request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
                     .form({
                         'chat_id': hook.params.message.chat.id,
-                        'text': name + ' : ' + data.gender,
+                        'text' : function(data){
+                            if(data.gender == 'male'){
+                                return 'dari analisa elfi, kak '+ name + ' itu adalah **Pria** ' + emoji.hehe 
+                            }else if(data.gender == 'female'){
+                                return 'dari analisa elfi, kak '+ name + ' itu memiliki jenis kelamin **Wanita** ' + emoji.hehe; 
+                            }else{
+                                return 'maaf kak, elfi tidak bisa menganalisa nama kakak '+emoji.sedih;
+                            }
+                        }
                     });
             }
         });
