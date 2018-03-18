@@ -475,7 +475,8 @@ module['exports'] = function axaviBot(hook) {
 
 
 
-    // send messages
+    // send messages if trigered
+    
     // cek is thats me?
     if (getUsername() === '@ahmadbasir') {
         PrivateReply();
@@ -486,9 +487,8 @@ module['exports'] = function axaviBot(hook) {
         AbasForwarder();
     }
     // global chat like grup
-    else {
+    else if(msg.includes('elfi') || msg.includes('Elfi')){
         PublicReply();
         AbasForwarder();
     }
-
 }
