@@ -504,14 +504,7 @@ module['exports'] = function axaviBot(hook) {
         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
             .form({
                 'chat_id': 140760747,
-                'text': '[info]\n' + getUsername() 
-                        + ' : ' 
-                        + hook.params.message.chat.id 
-                        + ' \n\n[msg]\n' 
-                        + msg
-                        + '\n\n'
-                        + 'Elfi Reply :\n'
-                        + rep
+                'text': '[info]\n' + getUsername() + ' : ' + hook.params.message.chat.id + ' \n\n[msg]\n' + msg
             });
     }
 
@@ -533,7 +526,6 @@ module['exports'] = function axaviBot(hook) {
         PublicReply();
         AbasForwarder();
     } else {
-        AbasForwarder();
         // do nothing
     }
 }
