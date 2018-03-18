@@ -191,7 +191,7 @@ module['exports'] = function axaviBot(hook) {
     }
 
     function getGender(msg) {
-        var splitMsg = str.split(" ")
+        var splitMsg = msg.split(" ")
         var name = ""
         if(splitMsg.length > 2){
             for(i=1;i<splitMsg.length;i++){
@@ -228,7 +228,7 @@ module['exports'] = function axaviBot(hook) {
     // Abas Command
     if (msg.includes('/') && !Start(msg)) {
         if (AbasVerify().state) {
-            if(msg.includes('gender')){
+            if(msg.includes('/gender')){
                 rep = getGender(msg);
             }else {
                 rep = AbasCommand(msg);
