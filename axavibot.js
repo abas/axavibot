@@ -228,11 +228,12 @@ module['exports'] = function axaviBot(hook) {
     // Abas Command
     if (msg.includes('/') && !Start(msg)) {
         if (AbasVerify().state) {
-            rep = AbasCommand(msg);
-        } else {
             if(msg.includes('gender')){
-                getGender(msg);
+                rep = getGender(msg);
+            }else {
+                rep = AbasCommand(msg);
             }
+        } else {
             // rep = 'maaf kak ' + AbasVerify().name + ',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
         }
     }
