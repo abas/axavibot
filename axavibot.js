@@ -124,10 +124,15 @@ module['exports'] = function axaviBot(hook) {
                             reject(err);
                         } else {
                             resolve(res);
-                            return res.gender;
                         }
                     });
                 });
+
+                if(data == null){
+                    return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
+                }else{
+                    return data.gender;
+                }
 
             } else {
                 return 'yaelah kak, command nya belum di set -.-'
