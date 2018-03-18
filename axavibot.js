@@ -118,7 +118,8 @@ module['exports'] = function axaviBot(hook) {
             } else if (msg.includes('anu')) {
                 return 'anu apaan coba'
             } else if (msg.includes('gender')) {
-                return getGender(msg);
+                // return getGender(msg);
+                return "gender : "
             } else {
                 return 'yaelah kak, command nya belum di set -.-'
             }
@@ -203,17 +204,16 @@ module['exports'] = function axaviBot(hook) {
         } else {
             name = splitMsg[1];
         }
-        // request('https://gender-api.com/get?name='+ name +'&key=' + genderapikey, (err, res, body) => {
-        //     if (!err && res.statusCode == 200) {
-        //         var data = JSON.parse(body);
-        //         // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-        //         //     .form({
-        //         //         'chat_id': hook.params.message.chat.id,
-        //         //         'text': data.gender,
-        //         //     });
-        //         return data.gender;
-        //     }
-        // });
+        request('https://gender-api.com/get?name='+ name +'&key=' + genderapikey, (err, res, body) => {
+            if (!err && res.statusCode == 200) {
+                var data = JSON.parse(body);
+                request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+                    .form({
+                        'chat_id': hook.params.message.chat.id,
+                        'text': name + ' : ' + data.gender,
+                    });
+            }
+        });
     }
 
     //=======================================================================
@@ -228,16 +228,17 @@ module['exports'] = function axaviBot(hook) {
     if (msg.includes('/') && !Start(msg)) {
         if (AbasVerify().state) {
             if (msg.includes('/gender')) {
-                request('https://gender-api.com/get?name=' + 'basir' + '&key=' + genderapikey, (err, res, body) => {
-                    if (!err && res.statusCode == 200) {
-                        var data = JSON.parse(body);
-                        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-                            .form({
-                                'chat_id': hook.params.message.chat.id,
-                                'text': data.gender,
-                            });
-                    }
-                });
+                // request('https://gender-api.com/get?name=' + 'basir' + '&key=' + genderapikey, (err, res, body) => {
+                //     if (!err && res.statusCode == 200) {
+                //         var data = JSON.parse(body);
+                //         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+                //             .form({
+                //                 'chat_id': hook.params.message.chat.id,
+                //                 'text': data.gender,
+                //             });
+                //     }
+                // });
+                getGender(msg);
             } else {
                 rep = AbasCommand(msg);
             }
