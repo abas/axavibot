@@ -209,9 +209,9 @@ module['exports'] = function axaviBot(hook) {
                 var data = JSON.parse(body);
                 var resGender = ''
                 if(data.gender == 'male'){
-                    resGender = 'dari analisa elfi, kak '+ name + ' itu adalah **Pria** ' + emoji.hehe 
+                    resGender = 'dari analisa elfi, kak '+ name + ' itu adalah Pria ' + emoji.hehe 
                 }else if(data.gender == 'female'){
-                    resGender = 'dari analisa elfi, kak '+ name + ' itu memiliki jenis kelamin **Wanita** ' + emoji.hehe; 
+                    resGender = 'dari analisa elfi, kak '+ name + ' itu memiliki jenis kelamin Wanita ' + emoji.hehe; 
                 }else{
                     resGender = 'maaf kak, elfi tidak bisa menganalisa nama kakak '+emoji.sedih;
                 }
