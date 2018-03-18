@@ -117,7 +117,10 @@ module['exports'] = function axaviBot(hook) {
                 return 'hari ini jadwal nya ini kak'
             } else if (msg.includes('anu')) {
                 return 'anu apaan coba'
-            } else {
+            } else if(msg.includes('gender')){
+                return getGender(msg);
+            }
+            else {
                 return 'yaelah kak, command nya belum di set -.-'
             }
         }
