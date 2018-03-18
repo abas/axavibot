@@ -477,18 +477,20 @@ module['exports'] = function axaviBot(hook) {
 
     // send messages if trigered
     
-    // cek is thats me?
-    if (getUsername() === '@ahmadbasir') {
-        PrivateReply();
-    }
-    // cek is not me and chat is private chat
-    else if (hook.params.message.chat.type == 'private') {
-        PrivateReply();
-        AbasForwarder();
-    }
-    // global chat like grup
-    else if(msg.includes('elfi') || msg.includes('Elfi')){
+    if (hook.params.message.chat.type == 'private') {
+        // cek is thats me?
+        if (getUsername() === '@ahmadbasir') {
+            PrivateReply();
+        }else{
+        // cek is not me and chat is private chat
+            PrivateReply();
+            AbasForwarder();
+        }
+    }else if(msg.includes('elfi') || msg.includes('Elfi')){
+        // global chat like grup
         PublicReply();
+        AbasForwarder();
+    }else{
         AbasForwarder();
     }
 }
