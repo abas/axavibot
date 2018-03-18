@@ -491,6 +491,6 @@ module['exports'] = function axaviBot(hook) {
         PublicReply();
         AbasForwarder();
     }else{
-        AbasForwarder();
+        // do nothing
     }
 }
