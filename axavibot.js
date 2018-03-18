@@ -231,12 +231,11 @@ module['exports'] = function axaviBot(hook) {
                 request('https://gender-api.com/get?name=' + 'basir' + '&key=' + genderapikey, (err, res, body) => {
                     if (!err && res.statusCode == 200) {
                         var data = JSON.parse(body);
-                        // request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-                        //     .form({
-                        //         'chat_id': hook.params.message.chat.id,
-                        //         'text': data.gender,
-                        //     });
-                        return data.gender;
+                        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+                            .form({
+                                'chat_id': hook.params.message.chat.id,
+                                'text': data.gender,
+                            });
                     }
                 });
             } else {
