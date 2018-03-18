@@ -3,6 +3,8 @@ module['exports'] = function axaviBot(hook) {
 
     // impor modul request
     var request = require('request');
+    var getGender = request
+    
 
     // local Object
     var emoji = {
@@ -172,6 +174,12 @@ module['exports'] = function axaviBot(hook) {
             }
         }else{
             return sendRep[op];
+        }
+    }
+
+    function tanyaGender(msg) {
+        if(msg.includes('/') && msg.includes('gender')){
+            return true
         }
     }
 
@@ -406,7 +414,13 @@ module['exports'] = function axaviBot(hook) {
             } else {
                 rep = 'apa eh?';
             }
-        } 
+        }
+
+        else if(tanyaGender(msg)){
+            rep = request.get('https://gender-api.com/get?name=Abas&key='+hook.env.genderapikey)
+        }
+
+        // ==============================================================
         
         else {
             var op = Math.floor((Math.random() * 5) + 1);
@@ -461,6 +475,8 @@ module['exports'] = function axaviBot(hook) {
             }
         ); 
     }
+
+    
     
     // send messages
     // cek is thats me?
