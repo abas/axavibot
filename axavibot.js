@@ -210,7 +210,7 @@ module['exports'] = function axaviBot(hook) {
                 request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
                     .form({
                         'chat_id': hook.params.message.chat.id,
-                        'text' : function(data){
+                        'text' : function(){
                             if(data.gender == 'male'){
                                 return 'dari analisa elfi, kak '+ name + ' itu adalah **Pria** ' + emoji.hehe 
                             }else if(data.gender == 'female'){
