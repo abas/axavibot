@@ -135,7 +135,7 @@ module['exports'] = function axaviBot(hook) {
                 // }else{
                 //     return data.gender;
                 // }
-                request('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', {
+                request('https://gender-api.com/get?name=elizabeth&key=' + genderapikey, {
                     json: true
                 }, (err, res, body) => {
                     if (err) {
