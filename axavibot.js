@@ -106,7 +106,8 @@ module['exports'] = function axaviBot(hook) {
             }else if(msg.includes('anu')){
                 return 'anu apaan coba'
             }else if(msg.includes('gender')){
-                return request.get('https://gender-api.com/get?name=Abas&key='+hook.env.genderapikey)
+                var data = request.get('https://gender-api.com/get?name=Abas&key='+hook.env.genderapikey)
+                return data
             }
             
             else{
