@@ -209,11 +209,11 @@ module['exports'] = function axaviBot(hook) {
                 var data = JSON.parse(body);
                 var resGender = ''
                 if(data.gender == 'male'){
-                    return 'dari analisa elfi, kak '+ name + ' itu adalah **Pria** ' + emoji.hehe 
+                    resGender = 'dari analisa elfi, kak '+ name + ' itu adalah **Pria** ' + emoji.hehe 
                 }else if(data.gender == 'female'){
-                    return 'dari analisa elfi, kak '+ name + ' itu memiliki jenis kelamin **Wanita** ' + emoji.hehe; 
+                    resGender = 'dari analisa elfi, kak '+ name + ' itu memiliki jenis kelamin **Wanita** ' + emoji.hehe; 
                 }else{
-                    return 'maaf kak, elfi tidak bisa menganalisa nama kakak '+emoji.sedih;
+                    resGender = 'maaf kak, elfi tidak bisa menganalisa nama kakak '+emoji.sedih;
                 }
                 request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
                     .form({
