@@ -229,7 +229,8 @@ module['exports'] = function axaviBot(hook) {
     if (msg.includes('/') && !Start(msg)) {
         if (AbasVerify().state) {
             if(msg.includes('/gender')){
-                rep = getGender(msg);
+                // rep = getGender(msg);
+                rep = "gender"
             }else {
                 rep = AbasCommand(msg);
             }
