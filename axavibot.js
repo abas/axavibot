@@ -105,6 +105,8 @@ module['exports'] = function axaviBot(hook) {
                 return 'hari ini jadwal nya ini kak'
             }else if(msg.includes('anu')){
                 return 'anu apaan coba'
+            }else if(msg.includes('gender')){
+                return request.get('https://gender-api.com/get?name=Abas&key='+hook.env.genderapikey)
             }
             
             else{
@@ -174,12 +176,6 @@ module['exports'] = function axaviBot(hook) {
             }
         }else{
             return sendRep[op];
-        }
-    }
-
-    function tanyaGender(msg) {
-        if(msg.includes('/') && msg.includes('gender')){
-            return true
         }
     }
 
@@ -414,10 +410,6 @@ module['exports'] = function axaviBot(hook) {
             } else {
                 rep = 'apa eh?';
             }
-        }
-
-        else if(tanyaGender(msg)){
-            rep = request.get('https://gender-api.com/get?name=Abas&key='+hook.env.genderapikey)
         }
 
         // ==============================================================
