@@ -118,23 +118,31 @@ module['exports'] = function axaviBot(hook) {
             } else if (msg.includes('anu')) {
                 return 'anu apaan coba'
             } else if (msg.includes('gender')) {
-                var data = new Promise(function (resolve, reject) {
-                    get('https://gender-api.com/get?name=elizabeth&key=' + genderapikey, function (err, res) {
-                        if (err) {
-                            return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
-                            reject(err);
-                        } else {
-                            return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
-                            resolve(res);
-                        }
-                    });
-                });
+                // var data = new Promise(function (resolve, reject) {
+                //     get('https://gender-api.com/get?name=elizabeth&key=' + genderapikey, function (err, res) {
+                //         if (err) {
+                //             return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
+                //             reject(err);
+                //         } else {
+                //             return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
+                //             resolve(res);
+                //         }
+                //     });
+                // });
 
-                if(data == null){
-                    return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
-                }else{
-                    return data.gender;
-                }
+                // if(data == null){
+                //     return "maaf kak, elfi masih tidak bisa mengambil data dari GenderAPI nya "+emoji.sedih;
+                // }else{
+                //     return data.gender;
+                // }
+                request('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', {
+                    json: true
+                }, (err, res, body) => {
+                    if (err) {
+                        return err;
+                    }
+                    return " "+body.url + body.explanation;
+                });
 
             } else {
                 return 'yaelah kak, command nya belum di set -.-'
@@ -476,21 +484,21 @@ module['exports'] = function axaviBot(hook) {
 
 
     // send messages if trigered
-    
+
     if (hook.params.message.chat.type == 'private') {
         // cek is thats me?
         if (getUsername() === '@ahmadbasir') {
             PrivateReply();
-        }else{
-        // cek is not me and chat is private chat
+        } else {
+            // cek is not me and chat is private chat
             PrivateReply();
             AbasForwarder();
         }
-    }else if(msg.includes('elfi') || msg.includes('Elfi')){
+    } else if (msg.includes('elfi') || msg.includes('Elfi')) {
         // global chat like grup
         PublicReply();
         AbasForwarder();
-    }else{
+    } else {
         // do nothing
     }
 }
