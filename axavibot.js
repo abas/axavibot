@@ -1,53 +1,64 @@
-
 module['exports'] = function axaviBot(hook) {
 
     // impor modul request
     var request = require('request');
-    var getGender = request
-    
+    var genderapikey = hook.env.genderapikey;
+    var Promise = require('promise');
 
     // local Object
     var emoji = {
-        hehe:'😁',wkwk:'😆',haha:'😂',hadeh:'🙃',suka:'😊',wlee:'😜',lopeU:'😘',cool:'😎',
-        marah:'😡',hm:'😐',ha:'🙄',sedih:'😢',kaget:'😱'
+        hehe: '😁',
+        wkwk: '😆',
+        haha: '😂',
+        hadeh: '🙃',
+        suka: '😊',
+        wlee: '😜',
+        lopeU: '😘',
+        cool: '😎',
+        marah: '😡',
+        hm: '😐',
+        ha: '🙄',
+        sedih: '😢',
+        kaget: '😱'
     }
-    
+
     // function
     // start
-    function Start(msg){
-        if(msg.includes('start')){
+    function Start(msg) {
+        if (msg.includes('start')) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    function getUsername(){
-        if(hook.params.message.chat.first_name==null){
-            return '@'+hook.params.message.from.username;
-        }else{
-            return '@'+hook.params.message.chat.username;
+    function getUsername() {
+        if (hook.params.message.chat.first_name == null) {
+            return '@' + hook.params.message.from.username;
+        } else {
+            return '@' + hook.params.message.chat.username;
         }
     }
 
-    function JerkFilter (msg){
+    function JerkFilter(msg) {
         // update jika ada masukan
         var textSaru = [
-            'coeg','asu','anjing','njing','anying','nying','anjng','fuck','keparat',
-            'fuk','kontol','kontil','goblok','bodo','bodoh','tolol','kntl','tai','tae',
-            'silit','bokong','ndas','ndes','bento','koplo','suek','nds','fck','kmprt','pejuh',
-            'titit','memek','kmcl','lonte','lnte','itil','itel','itl','kprt','jembut','mbut',
-            'asshole','asshl','bgst','bangsat','bangsut','telek','tembelek','sex','gawok',
-            'bosok','bangke'
+            'coeg', 'asu', 'anjing', 'njing', 'anying', 'nying', 'anjng', 'fuck', 'keparat',
+            'fuk', 'kontol', 'kontil', 'goblok', 'bodo', 'bodoh', 'tolol', 'kntl', 'tai', 'tae',
+            'silit', 'bokong', 'ndas', 'ndes', 'bento', 'koplo', 'suek', 'nds', 'fck', 'kmprt', 'pejuh',
+            'titit', 'memek', 'kmcl', 'lonte', 'lnte', 'itil', 'itel', 'itl', 'kprt', 'jembut', 'mbut',
+            'asshole', 'asshl', 'bgst', 'bangsat', 'bangsut', 'telek', 'tembelek', 'sex', 'gawok',
+            'bosok', 'bangke'
         ];
 
         var distance = textSaru.length;
         var bool = false; // nggak jorok
-        var idx=0;while(distance!=0){
-            if(msg.includes(textSaru[idx])){
+        var idx = 0;
+        while (distance != 0) {
+            if (msg.includes(textSaru[idx])) {
                 bool = true; // jorok
                 break;
-            }else{
+            } else {
                 distance--;
             }
             idx++;
@@ -55,22 +66,23 @@ module['exports'] = function axaviBot(hook) {
         return bool;
     }
 
-    function PraiseFilter (msg){
+    function PraiseFilter(msg) {
         var Praise = [
-            'cantik','ntik','cntk',
-            'ganteng','gntg',
-            'keren','kren','kyen','keyen','keree',
-            'cakep','ckep','cakp','cakeep','caakep',
-            'mantab','ntab','mntab','mntb','mantap','ntap','mantp','mntap','mantaa'
+            'cantik', 'ntik', 'cntk',
+            'ganteng', 'gntg',
+            'keren', 'kren', 'kyen', 'keyen', 'keree',
+            'cakep', 'ckep', 'cakp', 'cakeep', 'caakep',
+            'mantab', 'ntab', 'mntab', 'mntb', 'mantap', 'ntap', 'mantp', 'mntap', 'mantaa'
         ];
         var bool = false;
 
         var getLong = Praise.length;
-        var idx = 0;while(getLong!=0){
-            if(msg.includes(Praise[idx])){
+        var idx = 0;
+        while (getLong != 0) {
+            if (msg.includes(Praise[idx])) {
                 return true;
                 break;
-            }else{
+            } else {
                 getLong--;
             }
             idx++;
@@ -79,54 +91,61 @@ module['exports'] = function axaviBot(hook) {
     }
 
     // Abas Commander
-    function AbasVerify(){
+    function AbasVerify() {
         var abas = {
-            name : '',
-            state : false
+            name: '',
+            state: false
         };
-        if(hook.params.message.chat.first_name == null){
+        if (hook.params.message.chat.first_name == null) {
             abas.name = hook.params.message.from.first_name;
             abas.state = true;
-        }else{
+        } else {
             abas.name = hook.params.message.chat.first_name;
             abas.state = true;
-        } 
+        }
         // verif is that me?
-        if(abas.name == 'Abas_'){
+        if (abas.name == 'Abas_') {
             return abas;
-        }else{
+        } else {
             return abas.state;
         }
     }
 
-    function AbasCommand(msg){
-        if(AbasVerify().state){
-            if(msg.includes('jadwal')){
+    function AbasCommand(msg) {
+        if (AbasVerify().state) {
+            if (msg.includes('jadwal')) {
                 return 'hari ini jadwal nya ini kak'
-            }else if(msg.includes('anu')){
+            } else if (msg.includes('anu')) {
                 return 'anu apaan coba'
-            }else if(msg.includes('gender')){
-                var data = request.get('https://gender-api.com/get?name=Abas&key='+hook.env.genderapikey)
-                return data
-            }
-            
-            else{
+            } else if (msg.includes('gender')) {
+                var data = new Promise(function (resolve, reject) {
+                    get('https://gender-api.com/get?name=elizabeth&key=' + genderapikey, function (err, res) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(res);
+                            return res;
+                        }
+                    });
+                });
+
+            } else {
                 return 'yaelah kak, command nya belum di set -.-'
             }
         }
     }
 
-    function KnowOne(msg){
-        var person = ['kmu','dia']
+    function KnowOne(msg) {
+        var person = ['kmu', 'dia']
         var sendRep = [
-            
+
             'iya tau, kenapa emang?',
             'tau dong.. kakak naksir :v',
             'oh dia yang punya tompel itu?',
             'oh kakak yang pintar masak itu ya?',
             'dia anak band kan?',
             'kalo nggak salah dia yang suka kentut ya?',
-            
+
             'hmm, siapa ya? lupa kak wkwk',
             'aduh kak, gk tau elfi..',
             'wkwkwk orang stress bukan?',
@@ -139,23 +158,23 @@ module['exports'] = function axaviBot(hook) {
         ];
 
         var op = Math.floor((Math.random() * sendRep.length) + 1);
-        if(msg.includes('aku')){
-            var convSendRep = sendRep[op].replace('dia','kakak')
+        if (msg.includes('aku')) {
+            var convSendRep = sendRep[op].replace('dia', 'kakak')
             return convSendRep;
-        }else{
+        } else {
             return sendRep[op];
         }
     }
 
-    function IsMissed(msg){
+    function IsMissed(msg) {
         var missed = false;
-        if(msg.includes('kangen')){
+        if (msg.includes('kangen')) {
             missed = true;
         }
         return missed;
     }
-    
-    function MissingOne(msg){
+
+    function MissingOne(msg) {
         var sendRep = [
             'iya dia juga kangen,.. mungkin XD',
             'ciee kangen dia cieee',
@@ -167,15 +186,15 @@ module['exports'] = function axaviBot(hook) {
             'yaelah klo kangen ya ngomong langsung lah -.-'
         ];
         var op = Math.floor((Math.random() * sendRep.length));
-        if(msg.includes('kamu')||msg.includes('kmu')){
+        if (msg.includes('kamu') || msg.includes('kmu')) {
             var sender = ''
-            if(sendRep[op].includes('dia')){
-                sender = sendRep[op].replace('dia','elfi') 
+            if (sendRep[op].includes('dia')) {
+                sender = sendRep[op].replace('dia', 'elfi')
                 return sender;
-            }else{
+            } else {
                 return sendRep[op];
             }
-        }else{
+        } else {
             return sendRep[op];
         }
     }
@@ -184,23 +203,23 @@ module['exports'] = function axaviBot(hook) {
 
     // reply msg
     var msg = hook.params.message.text.toLowerCase();
-    var rep = '';   
+    var rep = '';
 
     //logically reply
 
     // Abas Command
-    if(msg.includes('/') && !Start(msg)){
-        if( AbasVerify().state ){
+    if (msg.includes('/') && !Start(msg)) {
+        if (AbasVerify().state) {
             rep = AbasCommand(msg);
-        }else{
-            rep = 'maaf kak '+AbasVerify().name+',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
+        } else {
+            rep = 'maaf kak ' + AbasVerify().name + ',.. \ncommand itu hanya boleh dilakukan kak Abas_ :)'
         }
     }
 
     // saru filter
-    else if(JerkFilter(msg)){
+    else if (JerkFilter(msg)) {
         var op = Math.floor((Math.random() * 5) + 1);
-        switch(op){
+        switch (op) {
             case 1:
                 rep = 'hayolhoo,, gaboleh bilang gituu';
                 break;
@@ -217,18 +236,12 @@ module['exports'] = function axaviBot(hook) {
                 rep = 'astaghfirullaaah.. istighfar kak -.-';
                 break;
         }
-    }
-
-    else if(msg.includes('kenal')||(msg.includes('kenal')&&msg.includes('?'))){
+    } else if (msg.includes('kenal') || (msg.includes('kenal') && msg.includes('?'))) {
         rep = KnowOne(msg);
-    }
-
-    else if(IsMissed(msg)){
+    } else if (IsMissed(msg)) {
         rep = MissingOne(msg);
-    }
-
-    else if(PraiseFilter(msg)){
-        if(msg.includes('cantik')){
+    } else if (PraiseFilter(msg)) {
+        if (msg.includes('cantik')) {
             var op = Math.floor((Math.random() * 5) + 1);
             switch (op) {
                 case 1:
@@ -247,9 +260,9 @@ module['exports'] = function axaviBot(hook) {
                     rep = 'iya iya percayaaa 😏';
                     break;
             }
-        }else{
+        } else {
             var op = Math.floor((Math.random() * 3) + 1);
-            switch(op){
+            switch (op) {
                 case 1:
                     rep = 'pffftt pede ';
                     break;
@@ -261,9 +274,7 @@ module['exports'] = function axaviBot(hook) {
                     break;
             }
         }
-    }
-    
-    else{
+    } else {
         if (msg.includes('/start')) {
             if (hook.params.message.chat.first_name == null) {
                 // rep = 'hi! kak '+hook.params.message.from.first_name+' saya elfi 😄';
@@ -287,13 +298,13 @@ module['exports'] = function axaviBot(hook) {
                     rep = rep + '\n\njangan di start terus dong, aku ngambek nih ._.';
                     break;
                 case 5:
-                    rep = rep + '';break;
+                    rep = rep + '';
+                    break;
                 case 6:
-                    rep = rep + '';break;
+                    rep = rep + '';
+                    break;
             }
-        }
-        
-        else if (msg.includes('lah')||(msg.length < 4 && msg.includes('lah')) || (msg.includes('lah') && msg.includes('ngaco')) || msg.includes('ngaco')) {
+        } else if (msg.includes('lah') || (msg.length < 4 && msg.includes('lah')) || (msg.includes('lah') && msg.includes('ngaco')) || msg.includes('ngaco')) {
             rep = 'wkwkwk 😂';
         } else if (msg.includes('wkwk') || msg.includes('haha') || msg.includes('wokwok')) {
             var op = Math.floor((Math.random() * 3) + 1);
@@ -319,8 +330,8 @@ module['exports'] = function axaviBot(hook) {
             }
         } else if (msg.includes('anjay') || msg.includes('anjaa') || msg.includes('anjaaa') || msg.includes('asem') || msg.includes('aseem')) {
             rep = 'wkwk 😝';
-        } else if(msg.includes('terimakasih')||msg.includes('makasih')||msg.includes('makasii')){
-            var op = Math.floor((Math.random() * 3) + 1 );
+        } else if (msg.includes('terimakasih') || msg.includes('makasih') || msg.includes('makasii')) {
+            var op = Math.floor((Math.random() * 3) + 1);
             switch (op) {
                 case 1:
                     rep = 'sama-samaa 😄';
@@ -332,21 +343,18 @@ module['exports'] = function axaviBot(hook) {
                     rep = 'terimakasih doang nih? .__.';
                     break;
             }
-        }
-
-
-        else if (msg.includes('hai')) {
-            if(hook.params.message.chat.first_name == null){
-                rep = 'hai juga kak 😄 '+hook.params.message.from.first_name;
-            }else{
+        } else if (msg.includes('hai')) {
+            if (hook.params.message.chat.first_name == null) {
+                rep = 'hai juga kak 😄 ' + hook.params.message.from.first_name;
+            } else {
                 rep = 'hai juga kak ' + hook.params.message.chat.first_name + ' 😄';
             }
         } else if (msg.includes('apa kabar') || msg.includes('apa kabar?') || msg.includes('kabar') || msg.includes('kabar?')) {
             rep = 'elfi selalu sehat :D\nkakak sendiri gimana? :D';
         } else if (msg.includes('sehat') || msg.includes('alhamdulillaah') || msg.includes('baik')) {
             rep = 'alhamdulillaaah :)';
-        } 
-        
+        }
+
         // JAM
         else if (msg.includes('jam') || msg.includes('jam?')) {
             if (msg.includes('sekarang') || msg.includes('ini')) {
@@ -355,9 +363,7 @@ module['exports'] = function axaviBot(hook) {
             } else {
                 rep = 'jam apa kak? ._.';
             }
-        }
-        
-        else if (msg.includes('lagi apa') || msg.includes('lagi apa?')) {
+        } else if (msg.includes('lagi apa') || msg.includes('lagi apa?')) {
             var op = Math.floor((Math.random() * 5) + 1);
             switch (op) {
                 case 1:
@@ -401,9 +407,7 @@ module['exports'] = function axaviBot(hook) {
                     break;
             }
 
-        }
-
-        else if (msg.includes('elfi')|| msg.includes('elfi?')) {
+        } else if (msg.includes('elfi') || msg.includes('elfi?')) {
             if (msg.length > 4) {
                 rep = 'kenapa kak?';
             } else if (msg.length < 6) {
@@ -414,7 +418,6 @@ module['exports'] = function axaviBot(hook) {
         }
 
         // ==============================================================
-        
         else {
             var op = Math.floor((Math.random() * 5) + 1);
             switch (op) {
@@ -438,52 +441,46 @@ module['exports'] = function axaviBot(hook) {
     }
 
     // reply function
-    function PublicReply(){
+    function PublicReply() {
         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
-        .form(
-            {
+            .form({
                 'chat_id': hook.params.message.chat.id,
                 'reply_to_message_id': hook.params.message.message_id,
                 'text': rep,
-            }
-        );
+            });
     }
 
-    function PrivateReply(){
+    function PrivateReply() {
         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-        .form(
-            {
+            .form({
                 'chat_id': hook.params.message.chat.id,
                 'text': rep,
-            }
-        );
-    }
-    
-    function AbasForwarder(){
-        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
-        .form(
-            {
-                'chat_id': 140760747,
-                'text': '[info]\n'+getUsername()+' : '+hook.params.message.chat.id+' \n\n[msg]\n'+msg
-            }
-        ); 
+            });
     }
 
-    
-    
+    function AbasForwarder() {
+        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage')
+            .form({
+                'chat_id': 140760747,
+                'text': '[info]\n' + getUsername() + ' : ' + hook.params.message.chat.id + ' \n\n[msg]\n' + msg
+            });
+    }
+
+
+
     // send messages
     // cek is thats me?
-    if(getUsername()==='@ahmadbasir'){
+    if (getUsername() === '@ahmadbasir') {
         PrivateReply();
     }
     // cek is not me and chat is private chat
-    else if(hook.params.message.chat.type=='private'){
+    else if (hook.params.message.chat.type == 'private') {
         PrivateReply();
-        AbasForwarder(); 
+        AbasForwarder();
     }
     // global chat like grup
-    else{
-        PublicReply();  
+    else {
+        PublicReply();
         AbasForwarder();
     }
 
