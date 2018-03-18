@@ -382,7 +382,7 @@ module['exports'] = function axaviBot(hook) {
             var op = Math.floor((Math.random() * 5) + 1);
             switch (op) {
                 case 1:
-                    rep = 'lagi mikirin kamu kak 😘';
+                    rep = 'lagi mikirin kamu 😘';
                     break;
                 case 2:
                     rep = 'lagi apa coba?';
@@ -394,7 +394,7 @@ module['exports'] = function axaviBot(hook) {
                     rep = 'lagi boker 😂';
                     break;
                 case 5:
-                    rep = 'lagi dimanja sama kak Abas_ 😂 kak';
+                    rep = 'kepoooO '+emoji.wlee;
                     break;
             }
         } else if (msg.includes('siapa?') || msg.includes('siapa')) {
@@ -434,7 +434,7 @@ module['exports'] = function axaviBot(hook) {
 
         // ==============================================================
         else {
-            var op = Math.floor((Math.random() * 5) + 1);
+            var op = Math.floor((Math.random() * 6) + 1);
             switch (op) {
                 case 1:
                     rep = 'maaf kak, aku masih tahap belajar.. belum mengerti apa itu ' + hook.params.message.text + ' 😅';
@@ -450,6 +450,9 @@ module['exports'] = function axaviBot(hook) {
                     break;
                 case 5:
                     rep = 'mbuh ah! gk tauk! 😶';
+                    break;
+                case 6:
+                    rep = 'apa itu '+msg+'?'+emoji.hm;
                     break;
             }
         }
