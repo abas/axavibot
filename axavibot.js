@@ -240,6 +240,8 @@ module['exports'] = function axaviBot(hook) {
                             });
                     }
                 });
+            }else{
+                rep = 'command belum di set'
             }
         }
     }
@@ -255,22 +257,11 @@ module['exports'] = function axaviBot(hook) {
     // Abas Command
     if (msg.includes('/') && !Start(msg)) {
         if (AbasVerify().state) {
-            if (msg.includes('/gender')) {
-                // request('https://gender-api.com/get?name=' + 'basir' + '&key=' + genderapikey, (err, res, body) => {
-                //     if (!err && res.statusCode == 200) {
-                //         var data = JSON.parse(body);
-                //         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
-                //             .form({
-                //                 'chat_id': hook.params.message.chat.id,
-                //                 'text': data.gender,
-                //             });
-                //     }
-                // });
+            if (msg.includes('gender')) {
                 getGender(msg);
             } else if(msg.includes('doscom')) {
                 doscom(msg)
             } 
-            
             else {
                 rep = AbasCommand(msg);
             }
