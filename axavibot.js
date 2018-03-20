@@ -267,7 +267,11 @@ module['exports'] = function axaviBot(hook) {
                 //     }
                 // });
                 getGender(msg);
-            } else {
+            } else if(msg.includes('doscom')) {
+                doscom(msg)
+            } 
+            
+            else {
                 rep = AbasCommand(msg);
             }
         } else {
