@@ -5,6 +5,9 @@ module['exports'] = function axaviBot(hook) {
     var genderapikey = hook.env.genderapikey;
     var Promise = require('promise');
 
+    var doscom_URL = 'http://du.doscom.org/'
+    var doscom_get_numbers = 'admin/doscom/getnumbers'
+
     // local Object
     var emoji = {
         hehe: '😁',
@@ -204,24 +207,41 @@ module['exports'] = function axaviBot(hook) {
         } else {
             name = splitMsg[1];
         }
-        request('https://gender-api.com/get?name='+ name +'&key=' + genderapikey, (err, res, body) => {
+        request('https://gender-api.com/get?name=' + name + '&key=' + genderapikey, (err, res, body) => {
             if (!err && res.statusCode == 200) {
                 var data = JSON.parse(body);
                 var resGender = ''
-                if(data.gender == 'male'){
-                    resGender = 'dari analisa elfi, kak '+ name + ' itu adalah Pria ' + emoji.hehe 
-                }else if(data.gender == 'female'){
-                    resGender = 'dari analisa elfi, kak '+ name + ' itu memiliki jenis kelamin Wanita ' + emoji.hehe; 
-                }else{
-                    resGender = 'maaf kak, elfi tidak bisa menganalisa nama kakak '+emoji.sedih;
+                if (data.gender == 'male') {
+                    resGender = 'dari analisa elfi, kak ' + name + ' itu adalah Pria ' + emoji.hehe
+                } else if (data.gender == 'female') {
+                    resGender = 'dari analisa elfi, kak ' + name + ' itu memiliki jenis kelamin Wanita ' + emoji.hehe;
+                } else {
+                    resGender = 'maaf kak, elfi tidak bisa menganalisa nama kakak ' + emoji.sedih;
                 }
                 request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
                     .form({
                         'chat_id': hook.params.message.chat.id,
-                        'text' : resGender
+                        'text': resGender
                     });
             }
         });
+    }
+
+    function doscom(msg) {
+        if (msg.includes('/doscom')) {
+            if (msg.includes('total') && msg.includes('peserta')) {
+                request(doscom_URL + doscom_get_numbers, (err, res, body) => {
+                    if (!err && res.statusCode == 200) {
+                        var data = JSON.parse(body);
+                        request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+                            .form({
+                                'chat_id': hook.params.message.chat.id,
+                                'text': 'peserta saat ini adalah : '+ data
+                            });
+                    }
+                });
+            }
+        }
     }
 
     //=======================================================================
