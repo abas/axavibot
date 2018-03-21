@@ -267,7 +267,7 @@ module['exports'] = function axaviBot(hook) {
             //     keywords = splitMsg[1];
             // }
             request(qwant_api, (err, res, body) => {
-                if (!err && res.status == 'success') {
+                if (!err) {
                     var data = JSON.parse(body);
                     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
                         .form({
