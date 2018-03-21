@@ -293,9 +293,17 @@ module['exports'] = function axaviBot(hook) {
         if (AbasVerify().state) {
             if (msg.includes('gender')) {
                 getGender(msg);
-            } else if (msg.includes('doscom')) {
+            } 
+            
+            else if (msg.includes('doscom')) {
                 doscom(msg)
-            } else {
+            } 
+            
+            else if(msg.includes('gambar')){
+                qwantImage(msg)
+            }
+            
+            else {
                 rep = AbasCommand(msg);
             }
         } else {
