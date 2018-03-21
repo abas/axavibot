@@ -273,7 +273,7 @@ module['exports'] = function axaviBot(hook) {
                         .form({
                             'chat_id': hook.params.message.chat.id,
                             'reply_to_message_id': hook.params.message.message_id,
-                            'text': 'peserta saat ini adalah : ' + data.status
+                            'text': data
                             // 'text': 'tes'
                         });
                 } else {
