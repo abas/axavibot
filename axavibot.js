@@ -5,8 +5,13 @@ module['exports'] = function axaviBot(hook) {
     var genderapikey = hook.env.genderapikey;
     var Promise = require('promise');
 
+    // doscom
     var doscom_URL = 'http://du.doscom.org/'
     var doscom_get_numbers = 'admin/doscom/getnumbers'
+
+    // qwant
+    var qwant_api = 'https://api.qwant.com/api/search/images?count=5&offset=1&q='
+
 
     // local Object
     var emoji = {
@@ -236,13 +241,42 @@ module['exports'] = function axaviBot(hook) {
                         request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
                             .form({
                                 'chat_id': hook.params.message.chat.id,
-                                'text': 'peserta saat ini adalah : '+ data
+                                'text': 'peserta saat ini adalah : ' + data
                             });
                     }
                 });
-            }else{
+            } else {
                 rep = 'command belum di set'
             }
+        }
+    }
+
+    function qwantImage(msg) {
+        if (msg.includes('/gambar')) {
+            var splitMsg = msg.split(" ")
+            var keywords = ""
+            if (splitMsg.length > 2) {
+                for (i = 1; i < splitMsg.length; i++) {
+                    if (splitMsg[i + 1] == null) {
+                        keywords = keywords + splitMsg[i];
+                    } else {
+                        keywords = keywords + splitMsg[i] + " ";
+                    }
+                }
+            } else {
+                keywords = splitMsg[1];
+            }
+            request(qwant_api + keywords, (err, res, body) => {
+                if (!err && res.statusCode == 200) {
+                    var data = JSON.parse(body);
+                    request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+                        .form({
+                            'chat_id': hook.params.message.chat.id,
+                            'reply_to_message_id': hook.params.message.message_id,
+                            'text': 'peserta saat ini adalah : ' + data.status
+                        });
+                }
+            });
         }
     }
 
@@ -259,10 +293,9 @@ module['exports'] = function axaviBot(hook) {
         if (AbasVerify().state) {
             if (msg.includes('gender')) {
                 getGender(msg);
-            } else if(msg.includes('doscom')) {
+            } else if (msg.includes('doscom')) {
                 doscom(msg)
-            } 
-            else {
+            } else {
                 rep = AbasCommand(msg);
             }
         } else {
