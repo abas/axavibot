@@ -10,7 +10,7 @@ module['exports'] = function axaviBot(hook) {
     var doscom_get_numbers = 'admin/doscom/getnumbers'
 
     // qwant
-    var qwant_api = 'https://api.qwant.com/api/search/images?count=5&offset=1&q='
+    var qwant_api = 'https://api.qwant.com/api/search/images?count=10&offset=1&q='
 
 
     // local Object
