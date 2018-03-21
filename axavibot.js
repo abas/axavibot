@@ -10,7 +10,7 @@ module['exports'] = function axaviBot(hook) {
     var doscom_get_numbers = 'admin/doscom/getnumbers'
 
     // qwant
-    var qwant_api = 'https://api.qwant.com/api/search/images?count=10&offset=1&q='
+    var qwant_api = 'https://api.qwant.com/api/search/images?count=10&offset=1&q=ghost'
 
 
     // local Object
@@ -253,20 +253,20 @@ module['exports'] = function axaviBot(hook) {
 
     function qwantImage(msg) {
         if (msg.includes('/gambar')) {
-            var splitMsg = msg.split(" ")
-            var keywords = ""
-            if (splitMsg.length > 2) {
-                for (i = 1; i < splitMsg.length; i++) {
-                    if (splitMsg[i + 1] == null) {
-                        keywords = keywords + splitMsg[i];
-                    } else {
-                        keywords = keywords + splitMsg[i] + " ";
-                    }
-                }
-            } else {
-                keywords = splitMsg[1];
-            }
-            request(qwant_api + keywords, (err, res, body) => {
+            // var splitMsg = msg.split(" ")
+            // var keywords = ""
+            // if (splitMsg.length > 2) {
+            //     for (i = 1; i < splitMsg.length; i++) {
+            //         if (splitMsg[i + 1] == null) {
+            //             keywords = keywords + splitMsg[i];
+            //         } else {
+            //             keywords = keywords + splitMsg[i] + " ";
+            //         }
+            //     }
+            // } else {
+            //     keywords = splitMsg[1];
+            // }
+            request(qwant_api, (err, res, body) => {
                 if (!err && res.statusCode == 200) {
                     var data = JSON.parse(body);
                     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
