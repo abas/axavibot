@@ -539,7 +539,7 @@ module['exports'] = function axaviBot(hook) {
     } else if (msg.includes('elfi') || msg.includes('Elfi')) {
         // global chat like grup
         PublicReply();
-        AbasForwarder();
+        // AbasForwarder();
     } else {
         // do nothing
     }
