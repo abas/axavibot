@@ -273,8 +273,18 @@ module['exports'] = function axaviBot(hook) {
                         .form({
                             'chat_id': hook.params.message.chat.id,
                             'reply_to_message_id': hook.params.message.message_id,
-                            'text': 'peserta saat ini adalah : ' + data.status
+                            // 'text': 'peserta saat ini adalah : ' + data.status
+                            'text': 'tes'
                         });
+                } else {
+                    request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
+                        .form({
+                            'chat_id': hook.params.message.chat.id,
+                            'reply_to_message_id': hook.params.message.message_id,
+                            // 'text': 'peserta saat ini adalah : ' + data.status
+                            'text': 'error'
+                        });
+
                 }
             });
         }
@@ -293,17 +303,11 @@ module['exports'] = function axaviBot(hook) {
         if (AbasVerify().state) {
             if (msg.includes('gender')) {
                 getGender(msg);
-            } 
-            
-            else if (msg.includes('doscom')) {
+            } else if (msg.includes('doscom')) {
                 doscom(msg)
-            } 
-            
-            else if(msg.includes('gambar')){
+            } else if (msg.includes('gambar')) {
                 qwantImage(msg)
-            }
-            
-            else {
+            } else {
                 rep = AbasCommand(msg);
             }
         } else {
