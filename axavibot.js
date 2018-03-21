@@ -266,7 +266,7 @@ module['exports'] = function axaviBot(hook) {
             // } else {
             //     keywords = splitMsg[1];
             // }
-            request(qwant_api, (err, res, body) => {
+            request('https://api.qwant.com/api/search/images?count=1&offset=1&q=cars', (err, res, body) => {
                 if (!err) {
                     // var data = JSON.parse(body);
                     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
