@@ -257,19 +257,19 @@ module['exports'] = function axaviBot(hook) {
 
     function DuckDuckGo(msg) {
         if (msg.includes('/apaitu')) {
-            // var splitMsg = msg.split(" ")
-            // var keywords = ""
-            // if (splitMsg.length > 2) {
-            //     for (i = 1; i < splitMsg.length; i++) {
-            //         if (splitMsg[i + 1] == null) {
-            //             keywords = keywords + splitMsg[i];
-            //         } else {
-            //             keywords = keywords + splitMsg[i] + " ";
-            //         }
-            //     }
-            // } else {
-            //     keywords = splitMsg[1];
-            // }
+            var splitMsg = msg.split(" ")
+            if (splitMsg.length > 2) {
+                for (i = 1; i < splitMsg.length; i++) {
+                    if (splitMsg[i + 1] == null) {
+                        keywords = keywords + splitMsg[i];
+                    } else {
+                        keywords = keywords + splitMsg[i] + " ";
+                    }
+                }
+            } else {
+                keywords = splitMsg[1];
+            }
+
             request(duckduckgo, (err, res, body) => {
                 if (!err) {
                     // var data = JSON.parse(body);
