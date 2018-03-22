@@ -270,18 +270,19 @@ module['exports'] = function axaviBot(hook) {
             // duckduckgo api
             var duckduckgo = 'https://api.duckduckgo.com/?q=' + keywords + '&format=json&pretty=1'
 
-            function ifNullAbstract(data){
-                if(data == '' || data == null){
-                    return 'maaf kak, elfi tidak bisa menganalisa kata tersebut '+emoji.sedih
-                }
-                return 'elfi mencoba mencari,. berikut hasil terbaik menurut elfi '+emoji.hehe+'\n' 
-                // + data.AbstractText +'\n'
-                // + data.Results[0].FirstURL
-            }
-            
+
             request(duckduckgo, (err, res, body) => {
                 if (!err) {
                     var data = JSON.parse(body);
+
+                    function ifNullAbstract(data) {
+                        if (data == '' || data == null) {
+                            return 'maaf kak, elfi tidak bisa menganalisa kata tersebut ' + emoji.sedih
+                        }
+                        return 'elfi mencoba mencari,. berikut hasil terbaik menurut elfi ' + emoji.hehe + '\n'
+                        + data.AbstractText +'\n'
+                        + data.Results[0].FirstURL
+                    }
                     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
                         .form({
                             'chat_id': hook.params.message.chat.id,
@@ -295,7 +296,7 @@ module['exports'] = function axaviBot(hook) {
                             'chat_id': hook.params.message.chat.id,
                             'reply_to_message_id': hook.params.message.message_id,
                             // 'text': 'peserta saat ini adalah : ' + data.status
-                            'text': 'maaf kak, elfi tidak bisa menganalisa kata tersebut '+emoji.sedih +' status [err]'
+                            'text': 'maaf kak, elfi tidak bisa menganalisa kata tersebut ' + emoji.sedih + ' status [err]'
                         });
 
                 }
