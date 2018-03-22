@@ -278,11 +278,11 @@ module['exports'] = function axaviBot(hook) {
                         .form({
                             'chat_id': hook.params.message.chat.id,
                             'reply_to_message_id': hook.params.message.message_id,
-                            'text': data.AbstractText == '' || data == null 
+                            'text': data.Abstract == '' || data == null 
                                     ? 'maaf kak, elfi tidak bisa menganalisa kata tersebut ' + emoji.sedih
-                                    : 'elfi mencoba mencari,. berikut hasil terbaik menurut elfi ' + emoji.hehe + '\n'
-                                    + data.AbstractText +'\n'
-                                    + data.Results[0].FirstURL
+                                    : 'elfi mencoba mencari,. berikut hasil terbaik menurut elfi ' + emoji.hehe + '\n\n'
+                                    + data.Abstract +'\n'
+                                    + data.AbstractURL
                             // 'text': 'tes'
                         });
                 } else {
