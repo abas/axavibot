@@ -13,6 +13,10 @@ module['exports'] = function axaviBot(hook) {
     var qwant_api = 'https://api.qwant.com/api/search/images?count=10&offset=1&q=ghost'
 
 
+    // duckduckgo
+    var keywords = '';
+    var duckduckgo = 'https://api.duckduckgo.com/?q='+keywords+'&format=json&pretty=1'
+
     // local Object
     var emoji = {
         hehe: '😁',
@@ -251,8 +255,8 @@ module['exports'] = function axaviBot(hook) {
         }
     }
 
-    function qwantImage(msg) {
-        if (msg.includes('/gambar')) {
+    function DuckDuckGo(msg) {
+        if (msg.includes('/apaitu')) {
             // var splitMsg = msg.split(" ")
             // var keywords = ""
             // if (splitMsg.length > 2) {
@@ -266,7 +270,7 @@ module['exports'] = function axaviBot(hook) {
             // } else {
             //     keywords = splitMsg[1];
             // }
-            request('https://api.qwant.com/api/search/images?count=1&offset=1&q=cars', (err, res, body) => {
+            request(duckduckgo, (err, res, body) => {
                 if (!err) {
                     // var data = JSON.parse(body);
                     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
@@ -305,8 +309,8 @@ module['exports'] = function axaviBot(hook) {
                 getGender(msg);
             } else if (msg.includes('doscom')) {
                 doscom(msg)
-            } else if (msg.includes('gambar')) {
-                qwantImage(msg)
+            } else if (msg.includes('apaitu')) {
+                DuckDuckGo(msg)
             } else {
                 rep = AbasCommand(msg);
             }
