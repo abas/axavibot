@@ -272,12 +272,12 @@ module['exports'] = function axaviBot(hook) {
 
             request(duckduckgo, (err, res, body) => {
                 if (!err) {
-                    // var data = JSON.parse(body);
+                    var data = JSON.parse(body);
                     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
                         .form({
                             'chat_id': hook.params.message.chat.id,
                             'reply_to_message_id': hook.params.message.message_id,
-                            'text': ''+body
+                            'text': ''+data
                             // 'text': 'tes'
                         });
                 } else {
