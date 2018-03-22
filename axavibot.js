@@ -270,7 +270,14 @@ module['exports'] = function axaviBot(hook) {
             // duckduckgo api
             var duckduckgo = 'https://api.duckduckgo.com/?q=' + keywords + '&format=json&pretty=1'
 
-
+            function ifNullAbstract(data){
+                if(data == '' || data == null){
+                    return 'elfi mencoba mencari,. berikut hasil terbaik menurut elfi '+emoji.hehe+'\n' 
+                    + data.AbstractText +'\n'
+                    + data.Results[0].FirstURL
+                }return 'maaf kak, elfi tidak bisa menganalisa kata tersebut '+emoji.sedih
+            }
+            
             request(duckduckgo, (err, res, body) => {
                 if (!err) {
                     var data = JSON.parse(body);
@@ -278,7 +285,7 @@ module['exports'] = function axaviBot(hook) {
                         .form({
                             'chat_id': hook.params.message.chat.id,
                             'reply_to_message_id': hook.params.message.message_id,
-                            'text': '' + data.AbstractText
+                            'text': ifNullAbstract(data.AbstractText)
                             // 'text': 'tes'
                         });
                 } else {
@@ -287,7 +294,7 @@ module['exports'] = function axaviBot(hook) {
                             'chat_id': hook.params.message.chat.id,
                             'reply_to_message_id': hook.params.message.message_id,
                             // 'text': 'peserta saat ini adalah : ' + data.status
-                            'text': 'error'
+                            'text': 'maaf kak, elfi tidak bisa menganalisa kata tersebut '+emoji.sedih
                         });
 
                 }
