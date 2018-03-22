@@ -14,7 +14,7 @@ module['exports'] = function axaviBot(hook) {
 
 
     // duckduckgo
-    var keywords = '';
+    var keywords = 'laravel';
     var duckduckgo = 'https://api.duckduckgo.com/?q='+keywords+'&format=json&pretty=1'
 
     // local Object
