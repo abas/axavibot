@@ -13,9 +13,6 @@ module['exports'] = function axaviBot(hook) {
     var qwant_api = 'https://api.qwant.com/api/search/images?count=10&offset=1&q=ghost'
 
 
-    // duckduckgo
-    var keywords = 'laravel';
-    var duckduckgo = 'https://api.duckduckgo.com/?q='+keywords+'&format=json&pretty=1'
 
     // local Object
     var emoji = {
@@ -257,19 +254,22 @@ module['exports'] = function axaviBot(hook) {
 
     function DuckDuckGo(msg) {
         if (msg.includes('/apaitu')) {
-            // var splitMsg = msg.split(" ")
-            // if (splitMsg.length > 2) {
-            //     for (i = 1; i < splitMsg.length; i++) {
-            //         if (splitMsg[i + 1] == null) {
-            //             keywords = keywords + splitMsg[i];
-            //         } else {
-            //             keywords = keywords + splitMsg[i] + " ";
-            //         }
-            //     }
-            // } else {
-            //     keywords = splitMsg[1];
-            // }
-            keywords = 'laravel'
+            var splitMsg = msg.split(" ")
+            if (splitMsg.length > 2) {
+                for (i = 1; i < splitMsg.length; i++) {
+                    if (splitMsg[i + 1] == null) {
+                        keywords = keywords + splitMsg[i];
+                    } else {
+                        keywords = keywords + splitMsg[i] + " ";
+                    }
+                }
+            } else {
+                keywords = splitMsg[1];
+            }
+
+            // duckduckgo api
+            var duckduckgo = 'https://api.duckduckgo.com/?q=' + keywords + '&format=json&pretty=1'
+
 
             request(duckduckgo, (err, res, body) => {
                 if (!err) {
@@ -278,7 +278,7 @@ module['exports'] = function axaviBot(hook) {
                         .form({
                             'chat_id': hook.params.message.chat.id,
                             'reply_to_message_id': hook.params.message.message_id,
-                            'text': ''+data.AbstractText
+                            'text': '' + data.AbstractText
                             // 'text': 'tes'
                         });
                 } else {
