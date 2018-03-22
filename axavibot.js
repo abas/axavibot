@@ -274,20 +274,15 @@ module['exports'] = function axaviBot(hook) {
             request(duckduckgo, (err, res, body) => {
                 if (!err) {
                     var data = JSON.parse(body);
-
-                    function ifNullAbstract(data) {
-                        if (data == '' || data == null) {
-                            return 'maaf kak, elfi tidak bisa menganalisa kata tersebut ' + emoji.sedih
-                        }
-                        return 'elfi mencoba mencari,. berikut hasil terbaik menurut elfi ' + emoji.hehe + '\n'
-                        + data.AbstractText +'\n'
-                        + data.Results[0].FirstURL
-                    }
                     request.post('https://api.telegram.org/bot' + hook.env.axavibot + '/sendMessage?')
                         .form({
                             'chat_id': hook.params.message.chat.id,
                             'reply_to_message_id': hook.params.message.message_id,
-                            'text': ifNullAbstract(data.AbstractText)
+                            'text': data.AbstractText == '' || data == null 
+                                    ? 'maaf kak, elfi tidak bisa menganalisa kata tersebut ' + emoji.sedih
+                                    : 'elfi mencoba mencari,. berikut hasil terbaik menurut elfi ' + emoji.hehe + '\n'
+                                    + data.AbstractText +'\n'
+                                    + data.Results[0].FirstURL
                             // 'text': 'tes'
                         });
                 } else {
