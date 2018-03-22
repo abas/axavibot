@@ -272,10 +272,11 @@ module['exports'] = function axaviBot(hook) {
 
             function ifNullAbstract(data){
                 if(data == '' || data == null){
-                    return 'elfi mencoba mencari,. berikut hasil terbaik menurut elfi '+emoji.hehe+'\n' 
-                    + data.AbstractText +'\n'
-                    + data.Results[0].FirstURL
-                }return 'maaf kak, elfi tidak bisa menganalisa kata tersebut '+emoji.sedih
+                    return 'maaf kak, elfi tidak bisa menganalisa kata tersebut '+emoji.sedih
+                }
+                return 'elfi mencoba mencari,. berikut hasil terbaik menurut elfi '+emoji.hehe+'\n' 
+                + data.AbstractText +'\n'
+                + data.Results[0].FirstURL
             }
             
             request(duckduckgo, (err, res, body) => {
